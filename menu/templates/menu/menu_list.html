@@ -1,0 +1,367 @@
+{% extends 'base.html' %}
+
+{% block title %}Меню - Dzūkija{% endblock %}
+
+{% block extra_css %}
+<style>
+    .menu-hero {
+        background: linear-gradient(rgba(46, 110, 79, 0.8), rgba(46, 110, 79, 0.8)), 
+                    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=600&fit=crop') center/cover;
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+    }
+    
+    .menu-section {
+        padding: 80px 0;
+        background: #f8f9fa;
+    }
+    
+    .category-tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .category-tab {
+        background: white;
+        border: 2px solid #E6B325;
+        color: #2E6E4F;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .category-tab::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(230, 179, 37, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .category-tab:hover::before {
+        left: 100%;
+    }
+    
+    .category-tab:hover,
+    .category-tab.active {
+        background: linear-gradient(45deg, #E6B325, #F4D03F);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(230, 179, 37, 0.3);
+    }
+    
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .menu-item-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .menu-item-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+    
+    .menu-item-link:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .menu-item-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #E6B325, #2E6E4F, #E6B325);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    .menu-item-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(230, 179, 37, 0.2);
+        border-color: #E6B325;
+    }
+    
+    .menu-item-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .menu-item-card:hover .menu-item-image {
+        transform: scale(1.05);
+    }
+    
+    .menu-item-body {
+        padding: 1.5rem;
+    }
+    
+    .menu-item-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        color: #2E6E4F;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .menu-item-description {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .menu-item-price {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #E6B325;
+        margin-bottom: 0.5rem;
+    }
+    
+    .menu-item-category {
+        display: inline-block;
+        background: rgba(46, 110, 79, 0.1);
+        color: #2E6E4F;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 1px solid rgba(46, 110, 79, 0.2);
+    }
+    
+    .menu-item-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #f0f0f0;
+    }
+    
+    .menu-item-weight {
+        color: #888;
+        font-size: 0.9rem;
+    }
+    
+    .menu-item-spicy {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: #e74c3c;
+        font-size: 0.9rem;
+    }
+    
+    .spicy-icon {
+        color: #e74c3c;
+    }
+    
+    .no-items-message {
+        text-align: center;
+        padding: 3rem;
+        color: #666;
+        font-style: italic;
+    }
+    
+    .ornament-divider {
+        text-align: center;
+        margin: 3rem 0;
+        color: #E6B325;
+        font-size: 2rem;
+        opacity: 0.7;
+    }
+    
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    @media (max-width: 768px) {
+        .category-tabs {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .category-tab {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+        }
+        
+        .menu-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .menu-item-card {
+            margin: 0 1rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="menu-hero">
+    <div class="container">
+        <h1 class="display-4" style="font-family: 'Cinzel', serif;">Наше меню</h1>
+        <div class="decorative-title" style="font-size: 3rem;">Dzūkija</div>
+        <p class="lead">Аутентичные блюда литовской кухни</p>
+        <div class="ornament-divider">❦ ❦ ❦</div>
+    </div>
+</section>
+
+<section class="menu-section">
+    <div class="container">
+        <!-- Категории -->
+        <div class="category-tabs">
+            <a href="{% url 'menu:menu_list' %}" class="category-tab {% if not category %}active{% endif %}">
+                <i class="bi bi-grid me-2"></i>Все блюда
+            </a>
+            {% for cat in categories %}
+                <a href="{% url 'menu:menu_list' %}?category={{ cat.id }}" 
+                   class="category-tab {% if category == cat %}active{% endif %}">
+                    <i class="bi bi-{{ cat.icon|default:'grid' }} me-2"></i>{{ cat.name }}
+                </a>
+            {% endfor %}
+        </div>
+
+        <!-- Список блюд по категориям -->
+        {% if categories %}
+            {% for category in categories %}
+                {% if category.items.all %}
+                    <div class="category-section mb-5">
+                        <h2 class="category-title text-center mb-4" style="color: #2E6E4F; font-family: 'Cinzel', serif;">
+                            <i class="bi bi-{{ category.icon|default:'grid' }} me-2"></i>
+                            {{ category.name }}
+                        </h2>
+                        {% if category.description %}
+                            <p class="category-description text-center mb-4" style="color: #666; font-style: italic;">
+                                {{ category.description }}
+                            </p>
+                        {% endif %}
+                        
+                        <div class="menu-grid">
+                            {% for item in category.items.all %}
+                                {% if item.is_available %}
+                                    <a href="{% url 'menu:item_detail' item.pk %}" class="text-decoration-none">
+                                        <div class="menu-item-card">
+                                            {% if item.image %}
+                                                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-item-image">
+                                            {% else %}
+                                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=250&fit=crop" 
+                                                     alt="{{ item.name }}" 
+                                                     class="menu-item-image"
+                                                     onerror="this.src='https://via.placeholder.com/400x250/8B4513/FFFFFF?text={{ item.name|urlencode }}'">
+                                            {% endif %}
+                                            
+                                            <div class="menu-item-body">
+                                                <h3 class="menu-item-title">{{ item.name }}</h3>
+                                                <p class="menu-item-description">{{ item.description }}</p>
+                                                
+                                                <div class="menu-item-details">
+                                                    <div>
+                                                        <div class="menu-item-price">{{ item.price }} ₽</div>
+                                                        <div class="menu-item-weight">{{ item.weight }}</div>
+                                                    </div>
+                                                    <div>
+                                                        {% if item.is_vegetarian %}
+                                                            <span class="badge bg-success me-1">Вегетарианское</span>
+                                                        {% endif %}
+                                                        {% if item.is_spicy %}
+                                                            <div class="menu-item-spicy">
+                                                                <i class="bi bi-fire spicy-icon"></i>
+                                                                Острое
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="text-center mt-3">
+                                                    <span class="btn btn-outline-primary btn-sm">
+                                                        <i class="bi bi-eye me-1"></i>Подробнее
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        
+                        {% if not forloop.last %}
+                            <div class="ornament-divider">❦ ❦ ❦</div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <div class="no-items-message">
+                <i class="bi bi-emoji-frown" style="font-size: 3rem; color: #E6B325; margin-bottom: 1rem;"></i>
+                <h3>Блюда не найдены</h3>
+                <p>В меню пока нет блюд. Пожалуйста, загляните позже.</p>
+            </div>
+        {% endif %}
+
+        <div class="ornament-divider">❦ ❦ ❦</div>
+        
+        <!-- Дополнительная информация -->
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm" style="border-left: 4px solid #E6B325 !important;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-info-circle me-2" style="color: #E6B325;"></i>
+                            О нашем меню
+                        </h5>
+                        <p class="card-text">
+                            Все блюда готовятся из свежих ингредиентов по традиционным литовским рецептам. 
+                            Мы используем только качественные продукты от проверенных поставщиков.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm" style="border-left: 4px solid #2E6E4F !important;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-clock me-2" style="color: #2E6E4F;"></i>
+                            Время приготовления
+                        </h5>
+                        <p class="card-text">
+                            Большинство блюд готовится 15-25 минут. Сложные блюда могут потребовать 
+                            до 40 минут. Мы ценим ваше время и стараемся готовить максимально быстро.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

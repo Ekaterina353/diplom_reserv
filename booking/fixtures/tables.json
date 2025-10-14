@@ -1,0 +1,232 @@
+[
+    {
+        "model": "booking.table",
+        "pk": 1,
+        "fields": {
+            "number": 1,
+            "seats": 2,
+            "description": "Комфортный уголок у окна для романтического вечера вдвоем",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 2,
+        "fields": {
+            "number": 2,
+            "seats": 2,
+            "description": "Уютный романтический уголок для двоих",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 3,
+        "fields": {
+            "number": 3,
+            "seats": 2,
+            "description": "Уединённый столик для двоих в тихом уголке",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 4,
+        "fields": {
+            "number": 4,
+            "seats": 2,
+            "description": "Уютный столик для двоих",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 5,
+        "fields": {
+            "number": 5,
+            "seats": 2,
+            "description": "Столик для двоих с видом на зал",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 6,
+        "fields": {
+            "number": 6,
+            "seats": 4,
+            "description": "Уютный столик для всей семьи",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 7,
+        "fields": {
+            "number": 7,
+            "seats": 4,
+            "description": "Столик для компании из 4 человек",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 8,
+        "fields": {
+            "number": 8,
+            "seats": 4,
+            "description": "Комфортный столик для дружеской встречи",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 9,
+        "fields": {
+            "number": 9,
+            "seats": 4,
+            "description": "Удобный столик для семьи с детьми",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 10,
+        "fields": {
+            "number": 10,
+            "seats": 4,
+            "description": "Комфортный столик для компании",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 11,
+        "fields": {
+            "number": 11,
+            "seats": 4,
+            "description": "Столик для делового обеда",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 12,
+        "fields": {
+            "number": 12,
+            "seats": 4,
+            "description": "Уютный столик для друзей",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 13,
+        "fields": {
+            "number": 13,
+            "seats": 4,
+            "description": "Столик для семейного ужина",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 14,
+        "fields": {
+            "number": 14,
+            "seats": 4,
+            "description": "Комфортный столик для компании",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 15,
+        "fields": {
+            "number": 15,
+            "seats": 4,
+            "description": "Столик для дружеской встречи",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 16,
+        "fields": {
+            "number": 16,
+            "seats": 4,
+            "description": "Удобный столик для семьи",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 17,
+        "fields": {
+            "number": 17,
+            "seats": 4,
+            "description": "Столик для компании из 4 человек",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 18,
+        "fields": {
+            "number": 18,
+            "seats": 4,
+            "description": "Комфортный столик для друзей",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 19,
+        "fields": {
+            "number": 19,
+            "seats": 4,
+            "description": "Столик для семейного обеда",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 20,
+        "fields": {
+            "number": 20,
+            "seats": 4,
+            "description": "Уютный столик для компании",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 21,
+        "fields": {
+            "number": 21,
+            "seats": 6,
+            "description": "Большой столик для компании друзей",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 22,
+        "fields": {
+            "number": 22,
+            "seats": 6,
+            "description": "Просторный столик для большой семьи",
+            "is_available": true
+        }
+    },
+    {
+        "model": "booking.table",
+        "pk": 23,
+        "fields": {
+            "number": 23,
+            "seats": 6,
+            "description": "Комфортный столик для большой компании",
+            "is_available": true
+        }
+    }
+] 

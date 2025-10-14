@@ -1,0 +1,77 @@
+services:
+  # База данных PostgreSQL
+  db:
+    image: postgres:15
+    container_name: resto_reserve_db
+    environment:
+      POSTGRES_DB: ${DB_NAME:-resto_reserve}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - resto_reserve_network
+    restart: unless-stopped
+
+  # Redis для кэширования (опционально) - отключен, так как не используется
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: resto_reserve_redis
+  #   ports:
+  #     - "6379:6379"
+  #   networks:
+  #     - resto_reserve_network
+  #   restart: unless-stopped
+
+  # Django приложение
+  web:
+    build: .
+    container_name: resto_reserve_web
+    environment:
+      - DEBUG=${DEBUG:-False}
+      - SECRET_KEY=${SECRET_KEY}
+      - DB_NAME=${DB_NAME:-resto_reserve}
+      - DB_USER=${DB_USER:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD:-postgres}
+      - DB_HOST=db
+      - DB_PORT=5432
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1}
+    volumes:
+      - ./static:/app/static
+      - ./media:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - resto_reserve_network
+    restart: unless-stopped
+    # Команда запускается через entrypoint.sh
+
+  # Nginx для статических файлов и прокси
+  nginx:
+    image: nginx:alpine
+    container_name: resto_reserve_nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./static:/app/static
+      - ./media:/app/media
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    networks:
+      - resto_reserve_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  resto_reserve_network:
+    driver: bridge

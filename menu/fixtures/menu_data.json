@@ -1,0 +1,224 @@
+[
+    {
+        "model": "menu.menucategory",
+        "pk": 1,
+        "fields": {
+            "name": "Закуски",
+            "description": "Традиционные литовские закуски и холодные блюда",
+            "icon": "egg-fried",
+            "order": 1,
+            "is_active": true,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menucategory",
+        "pk": 2,
+        "fields": {
+            "name": "Супы",
+            "description": "Наваристые литовские супы и бульоны",
+            "icon": "cup-hot",
+            "order": 2,
+            "is_active": true,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menucategory",
+        "pk": 3,
+        "fields": {
+            "name": "Основные блюда",
+            "description": "Классические литовские блюда и мясные деликатесы",
+            "icon": "drumstick",
+            "order": 3,
+            "is_active": true,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menucategory",
+        "pk": 4,
+        "fields": {
+            "name": "Рыбные блюда",
+            "description": "Блюда из свежей рыбы Балтийского моря",
+            "icon": "fish",
+            "order": 4,
+            "is_active": true,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menucategory",
+        "pk": 5,
+        "fields": {
+            "name": "Десерты",
+            "description": "Традиционные литовские сладости и выпечка",
+            "icon": "cake2",
+            "order": 5,
+            "is_active": true,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menucategory",
+        "pk": 6,
+        "fields": {
+            "name": "Напитки",
+            "description": "Литовские настойки, коктейли и безалкогольные напитки",
+            "icon": "cup-straw",
+            "order": 6,
+            "is_active": true,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 1,
+        "fields": {
+            "name": "Кибинай",
+            "description": "Традиционные литовские пирожки с бараниной и луком, запеченные в духовке до золотистой корочки",
+            "price": "450.00",
+            "category": 1,
+            "image": "",
+            "weight": "200 г (2 шт)",
+            "is_vegetarian": false,
+            "is_spicy": false,
+            "is_available": true,
+            "order": 1,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 2,
+        "fields": {
+            "name": "Цепелины",
+            "description": "Национальное литовское блюдо - картофельные клецки с мясной начинкой, подаются со сметаной и шкварками",
+            "price": "650.00",
+            "category": 3,
+            "image": "",
+            "weight": "350 г",
+            "is_vegetarian": false,
+            "is_spicy": false,
+            "is_available": true,
+            "order": 1,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 3,
+        "fields": {
+            "name": "Шалтибаршчяй",
+            "description": "Холодный борщ по-литовски со свеклой, огурцами и сметаной, подается с горячим картофелем",
+            "price": "380.00",
+            "category": 2,
+            "image": "",
+            "weight": "400 г",
+            "is_vegetarian": true,
+            "is_spicy": false,
+            "is_available": true,
+            "order": 1,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 4,
+        "fields": {
+            "name": "Копченый угорь",
+            "description": "Свежий угорь из Балтийского моря, копченый по традиционному рецепту, подается с лимоном и зеленью",
+            "price": "890.00",
+            "category": 4,
+            "image": "",
+            "weight": "250 г",
+            "is_vegetarian": false,
+            "is_spicy": false,
+            "is_available": true,
+            "order": 1,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 5,
+        "fields": {
+            "name": "Шактис",
+            "description": "Традиционный литовский пирог с творогом и изюмом, посыпанный сахарной пудрой",
+            "price": "320.00",
+            "category": 5,
+            "image": "",
+            "weight": "150 г",
+            "is_vegetarian": true,
+            "is_spicy": false,
+            "is_available": true,
+            "order": 1,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 6,
+        "fields": {
+            "name": "Жемайчю дуонас",
+            "description": "Традиционный ржаной хлеб по рецепту из Жемайтии, выпеченный на натуральной закваске",
+            "price": "180.00",
+            "category": 1,
+            "image": "",
+            "weight": "300 г",
+            "is_vegetarian": true,
+            "is_spicy": false,
+            "is_available": true,
+            "order": 2,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 7,
+        "fields": {
+            "name": "Кумпис",
+            "description": "Тушеная свинина с квашеной капустой и картофелем, приготовленная по старинному рецепту",
+            "price": "580.00",
+            "category": 3,
+            "image": "",
+            "weight": "400 г",
+            "is_vegetarian": false,
+            "is_spicy": false,
+            "is_available": true,
+            "order": 2,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "menu.menuitem",
+        "pk": 8,
+        "fields": {
+            "name": "Литовская настойка",
+            "description": "Домашняя настойка на травах и ягодах по традиционному рецепту, подается охлажденной",
+            "price": "280.00",
+            "category": 6,
+            "image": "",
+            "weight": "50 мл",
+            "is_vegetarian": true,
+            "is_spicy": false,
+            "is_available": true,
+            "order": 1,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    }
+] 

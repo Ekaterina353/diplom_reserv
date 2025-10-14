@@ -1,0 +1,185 @@
+/* Литовские орнаменты для сайта Dzūkija */
+
+/* Основной фоновый орнамент */
+.lithuanian-bg {
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(230, 179, 37, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(46, 110, 79, 0.03) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 40%, rgba(230, 179, 37, 0.02) 40%, rgba(230, 179, 37, 0.02) 60%, transparent 60%),
+        linear-gradient(-45deg, transparent 40%, rgba(46, 110, 79, 0.02) 40%, rgba(46, 110, 79, 0.02) 60%, transparent 60%);
+    background-size: 100px 100px, 150px 150px, 50px 50px, 50px 50px;
+    background-position: 0 0, 50px 50px, 0 0, 0 0;
+}
+
+/* Орнамент для карточек */
+.card-ornament {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-ornament::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #E6B325 20%, 
+        #2E6E4F 40%, 
+        #E6B325 60%, 
+        #2E6E4F 80%, 
+        transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Орнамент для заголовков */
+.title-ornament {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.title-ornament::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        #E6B325 0px,
+        #E6B325 4px,
+        transparent 4px,
+        transparent 8px
+    );
+}
+
+/* Декоративные элементы */
+.ornament-corner {
+    position: relative;
+}
+
+.ornament-corner::before {
+    content: '❦';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    color: #E6B325;
+    font-size: 20px;
+    opacity: 0.4;
+}
+
+.ornament-corner::after {
+    content: '❦';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    color: #E6B325;
+    font-size: 20px;
+    opacity: 0.4;
+    transform: rotate(180deg);
+}
+
+/* Геометрический орнамент */
+.geometric-pattern {
+    background-image: 
+        linear-gradient(30deg, rgba(230, 179, 37, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(230, 179, 37, 0.05) 87.5%, rgba(230, 179, 37, 0.05)),
+        linear-gradient(150deg, rgba(46, 110, 79, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(46, 110, 79, 0.05) 87.5%, rgba(46, 110, 79, 0.05)),
+        linear-gradient(30deg, rgba(230, 179, 37, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(230, 179, 37, 0.05) 87.5%, rgba(230, 179, 37, 0.05)),
+        linear-gradient(150deg, rgba(46, 110, 79, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(46, 110, 79, 0.05) 87.5%, rgba(46, 110, 79, 0.05)),
+        linear-gradient(60deg, rgba(244, 208, 63, 0.08) 25%, transparent 25.5%, transparent 75%, rgba(244, 208, 63, 0.08) 75%, rgba(244, 208, 63, 0.08)),
+        linear-gradient(60deg, rgba(58, 122, 95, 0.08) 25%, transparent 25.5%, transparent 75%, rgba(58, 122, 95, 0.08) 75%, rgba(58, 122, 95, 0.08));
+    background-size: 40px 70px;
+    background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+}
+
+/* Цветочный орнамент */
+.floral-pattern {
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(230, 179, 37, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(46, 110, 79, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(244, 208, 63, 0.02) 0%, transparent 70%);
+    background-size: 80px 80px, 120px 120px, 60px 60px;
+    background-position: 0 0, 40px 40px, 20px 20px;
+}
+
+/* Анимация мерцания */
+@keyframes shimmer {
+    0%, 100% { background-position: -200% 0; }
+    50% { background-position: 200% 0; }
+}
+
+/* Орнамент для навигации */
+.navbar-ornament {
+    position: relative;
+}
+
+.navbar-ornament::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        #E6B325 0px,
+        #E6B325 3px,
+        transparent 3px,
+        transparent 6px
+    );
+}
+
+/* Декоративные разделители */
+.ornament-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.ornament-divider::before {
+    content: '❦ ❦ ❦';
+    color: #E6B325;
+    font-size: 24px;
+    opacity: 0.5;
+    letter-spacing: 20px;
+}
+
+/* Орнамент для футера */
+.footer-ornament {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-ornament::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 100%);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .lithuanian-bg {
+        background-size: 50px 50px, 75px 75px, 25px 25px, 25px 25px;
+    }
+    
+    .geometric-pattern {
+        background-size: 20px 35px;
+        background-position: 0 0, 0 0, 10px 17.5px, 10px 17.5px, 0 0, 10px 17.5px;
+    }
+    
+    .floral-pattern {
+        background-size: 40px 40px, 60px 60px, 30px 30px;
+    }
+} 
