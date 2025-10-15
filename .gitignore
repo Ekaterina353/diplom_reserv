@@ -185,7 +185,7 @@ static/css/all.min.css
 static/js/all.min.js
 
 # Font Awesome files
-static/css/all.min.css
+
 static/webfonts/
 
 # Third-party libraries (если используете CDN)
