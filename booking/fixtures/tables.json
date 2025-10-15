@@ -5,7 +5,7 @@
         "fields": {
             "number": 1,
             "seats": 2,
-            "description": "Комфортный уголок у окна для романтического вечера вдвоем",
+            "description": "Уютный столик для двоих у окна",
             "is_available": true
         }
     },
@@ -15,7 +15,7 @@
         "fields": {
             "number": 2,
             "seats": 2,
-            "description": "Уютный романтический уголок для двоих",
+            "description": "Романтичный столик для двоих",
             "is_available": true
         }
     },
@@ -25,7 +25,7 @@
         "fields": {
             "number": 3,
             "seats": 2,
-            "description": "Уединённый столик для двоих в тихом уголке",
+            "description": "Столик для двоих в тихом уголке",
             "is_available": true
         }
     },
@@ -55,7 +55,7 @@
         "fields": {
             "number": 6,
             "seats": 4,
-            "description": "Уютный столик для всей семьи",
+            "description": "Комфортный столик для семьи",
             "is_available": true
         }
     },
@@ -75,7 +75,7 @@
         "fields": {
             "number": 8,
             "seats": 4,
-            "description": "Комфортный столик для дружеской встречи",
+            "description": "Удобный столик для дружеской встречи",
             "is_available": true
         }
     },
@@ -85,7 +85,7 @@
         "fields": {
             "number": 9,
             "seats": 4,
-            "description": "Удобный столик для семьи с детьми",
+            "description": "Столик для семьи с детьми",
             "is_available": true
         }
     },
