@@ -246,46 +246,49 @@
                         <h1 class="booking-title">Бронирование столика</h1>
                         <div class="booking-subtitle">Dzūkija</div>
                     </div>
-                    
+
                     <div class="booking-body">
-                                                 {% if messages %}
-                             {% for message in messages %}
-                                 <div class="alert alert-{{ message.tags }}">
-                                     <i class="bi bi-{% if message.tags == 'success' %}check-circle{% else %}exclamation-triangle{% endif %} me-2"></i>
-                                     {{ message }}
-                                 </div>
-                             {% endfor %}
-                         {% endif %}
-                         
-                         {% if form.errors %}
-                             <div class="field-error">
-                                 <h6><i class="bi bi-exclamation-triangle me-2"></i>Пожалуйста, исправьте следующие ошибки:</h6>
-                                 <ul>
-                                     {% for field, errors in form.errors.items %}
-                                         {% for error in errors %}
-                                             <li>{{ error }}</li>
-                                         {% endfor %}
-                                     {% endfor %}
-                                 </ul>
-                             </div>
-                         {% endif %}
-                        
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            <i class="bi bi-{% if message.tags == 'success' %}check-circle{% else %}exclamation-triangle{% endif %} me-2"></i>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+
+                        {% if form.errors %}
+                        <div class="field-error">
+                            <h6><i class="bi bi-exclamation-triangle me-2"></i>Пожалуйста, исправьте следующие ошибки:
+                            </h6>
+                            <ul>
+                                {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
                         {% if selected_item %}
-                            <div class="alert alert-info" style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #E6B325; color: #2E6E4F;">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-cart-check me-3" style="font-size: 1.5rem; color: #E6B325;"></i>
-                                    <div>
-                                        <h5 class="mb-1">Выбранное блюдо</h5>
-                                        <p class="mb-0">
-                                            <strong>{{ selected_item.name }}</strong> - {{ selected_item.price }} ₽
-                                            <br>
-                                            <small class="text-muted">{{ selected_item.category.name }} • {{ selected_item.weight }}</small>
-                                        </p>
-                                    </div>
+                        <div class="alert alert-info"
+                             style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #E6B325; color: #2E6E4F;">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-cart-check me-3" style="font-size: 1.5rem; color: #E6B325;"></i>
+                                <div>
+                                    <h5 class="mb-1">Выбранное блюдо</h5>
+                                    <p class="mb-0">
+                                        <strong>{{ selected_item.name }}</strong> - {{ selected_item.price }} ₽
+                                        <br>
+                                        <small class="text-muted">{{ selected_item.category.name }} • {{
+                                            selected_item.weight }}</small>
+                                    </p>
                                 </div>
                             </div>
+                        </div>
                         {% endif %}
-                        
+
                         <div class="table-info">
                             <h4>
                                 <i class="bi bi-table me-2"></i>
@@ -293,37 +296,53 @@
                             </h4>
                             <div class="row mb-3">
                                 <div class="col-md-4 text-center">
-                                    <div class="table-stat" style="background: rgba(40, 167, 69, 0.1); border-radius: 10px; padding: 1rem;">
+                                    <div class="table-stat"
+                                         style="background: rgba(40, 167, 69, 0.1); border-radius: 10px; padding: 1rem;">
                                         <i class="bi bi-people" style="font-size: 1.5rem; color: #28a745;"></i>
-                                        <div class="table-stat-number" style="font-size: 1.2rem; font-weight: bold; color: #28a745;">5</div>
-                                        <div class="table-stat-label" style="font-size: 0.9rem; color: #666;">Столиков на 2</div>
+                                        <div class="table-stat-number"
+                                             style="font-size: 1.2rem; font-weight: bold; color: #28a745;">5
+                                        </div>
+                                        <div class="table-stat-label" style="font-size: 0.9rem; color: #666;">Столиков
+                                            на 2
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4 text-center">
-                                    <div class="table-stat" style="background: rgba(230, 179, 37, 0.1); border-radius: 10px; padding: 1rem;">
+                                    <div class="table-stat"
+                                         style="background: rgba(230, 179, 37, 0.1); border-radius: 10px; padding: 1rem;">
                                         <i class="bi bi-people-fill" style="font-size: 1.5rem; color: #E6B325;"></i>
-                                        <div class="table-stat-number" style="font-size: 1.2rem; font-weight: bold; color: #E6B325;">15</div>
-                                        <div class="table-stat-label" style="font-size: 0.9rem; color: #666;">Столиков на 4</div>
+                                        <div class="table-stat-number"
+                                             style="font-size: 1.2rem; font-weight: bold; color: #E6B325;">15
+                                        </div>
+                                        <div class="table-stat-label" style="font-size: 0.9rem; color: #666;">Столиков
+                                            на 4
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4 text-center">
-                                    <div class="table-stat" style="background: rgba(46, 110, 79, 0.1); border-radius: 10px; padding: 1rem;">
+                                    <div class="table-stat"
+                                         style="background: rgba(46, 110, 79, 0.1); border-radius: 10px; padding: 1rem;">
                                         <i class="bi bi-people" style="font-size: 1.5rem; color: #2E6E4F;"></i>
-                                        <div class="table-stat-number" style="font-size: 1.2rem; font-weight: bold; color: #2E6E4F;">3</div>
-                                        <div class="table-stat-label" style="font-size: 0.9rem; color: #666;">Столиков на 6</div>
+                                        <div class="table-stat-number"
+                                             style="font-size: 1.2rem; font-weight: bold; color: #2E6E4F;">3
+                                        </div>
+                                        <div class="table-stat-label" style="font-size: 0.9rem; color: #666;">Столиков
+                                            на 6
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center">
                                 <p class="text-muted mb-0">
                                     <i class="bi bi-info-circle me-2"></i>
-                                    Всего столиков: <strong>{{ tables.count }}</strong> | 
+                                    Всего столиков: <strong>{{ tables.count }}</strong> |
                                     Вместимость: от 2 до 6 человек
                                 </p>
                             </div>
-                            
+
                             <!-- Подробная информация о столиках -->
-                            <div class="table-details mt-3" style="background: rgba(46, 110, 79, 0.05); border: 1px solid rgba(46, 110, 79, 0.2); border-radius: 15px; padding: 1.5rem;">
+                            <div class="table-details mt-3"
+                                 style="background: rgba(46, 110, 79, 0.05); border: 1px solid rgba(46, 110, 79, 0.2); border-radius: 15px; padding: 1.5rem;">
                                 <h5 style="color: #2E6E4F; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
                                     <i class="bi bi-info-circle me-2"></i>
                                     Подробная информация о столиках
@@ -377,34 +396,34 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="ornament-divider">❦ ❦ ❦</div>
-                        
+
                         <form method="post" novalidate>
                             {% csrf_token %}
-                            
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="{{ form.name.id_for_label }}" class="form-label">
                                             <i class="bi bi-person me-2"></i>Имя
                                         </label>
-                                                                                 {{ form.name }}
-                                         {% if form.name.errors %}
-                                             <div class="invalid-feedback">
-                                                 {% for error in form.name.errors %}
-                                                     {{ error }}
-                                                 {% endfor %}
-                                             </div>
-                                         {% endif %}
-                                         {% if form.name.value and not form.name.errors %}
-                                             <div class="valid-feedback">
-                                                 <i class="bi bi-check-circle me-1"></i>Имя указано корректно
-                                             </div>
-                                         {% endif %}
+                                        {{ form.name }}
+                                        {% if form.name.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.name.errors %}
+                                            {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                        {% if form.name.value and not form.name.errors %}
+                                        <div class="valid-feedback">
+                                            <i class="bi bi-check-circle me-1"></i>Имя указано корректно
+                                        </div>
+                                        {% endif %}
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="{{ form.phone.id_for_label }}" class="form-label">
@@ -412,16 +431,16 @@
                                         </label>
                                         {{ form.phone }}
                                         {% if form.phone.errors %}
-                                            <div class="invalid-feedback">
-                                                {% for error in form.phone.errors %}
-                                                    {{ error }}
-                                                {% endfor %}
-                                            </div>
+                                        <div class="invalid-feedback">
+                                            {% for error in form.phone.errors %}
+                                            {{ error }}
+                                            {% endfor %}
+                                        </div>
                                         {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -430,15 +449,15 @@
                                         </label>
                                         {{ form.date }}
                                         {% if form.date.errors %}
-                                            <div class="invalid-feedback">
-                                                {% for error in form.date.errors %}
-                                                    {{ error }}
-                                                {% endfor %}
-                                            </div>
+                                        <div class="invalid-feedback">
+                                            {% for error in form.date.errors %}
+                                            {{ error }}
+                                            {% endfor %}
+                                        </div>
                                         {% endif %}
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="{{ form.time.id_for_label }}" class="form-label">
@@ -446,16 +465,16 @@
                                         </label>
                                         {{ form.time }}
                                         {% if form.time.errors %}
-                                            <div class="invalid-feedback">
-                                                {% for error in form.time.errors %}
-                                                    {{ error }}
-                                                {% endfor %}
-                                            </div>
+                                        <div class="invalid-feedback">
+                                            {% for error in form.time.errors %}
+                                            {{ error }}
+                                            {% endfor %}
+                                        </div>
                                         {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -464,15 +483,15 @@
                                         </label>
                                         {{ form.table }}
                                         {% if form.table.errors %}
-                                            <div class="invalid-feedback">
-                                                {% for error in form.table.errors %}
-                                                    {{ error }}
-                                                {% endfor %}
-                                            </div>
+                                        <div class="invalid-feedback">
+                                            {% for error in form.table.errors %}
+                                            {{ error }}
+                                            {% endfor %}
+                                        </div>
                                         {% endif %}
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="{{ form.guests_count.id_for_label }}" class="form-label">
@@ -480,84 +499,88 @@
                                         </label>
                                         {{ form.guests_count }}
                                         {% if form.guests_count.errors %}
-                                            <div class="invalid-feedback">
-                                                {% for error in form.guests_count.errors %}
-                                                    {{ error }}
-                                                {% endfor %}
-                                            </div>
+                                        <div class="invalid-feedback">
+                                            {% for error in form.guests_count.errors %}
+                                            {{ error }}
+                                            {% endfor %}
+                                        </div>
                                         {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="{{ form.comments.id_for_label }}" class="form-label">
                                     <i class="bi bi-chat-text me-2"></i>Комментарий (необязательно)
                                 </label>
                                 {{ form.comments }}
                                 {% if form.comments.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.comments.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.comments.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
                             </div>
-                            
+
                             <!-- Секция выбора блюд из меню -->
                             <div class="form-group">
                                 <label class="form-label">
                                     <i class="bi bi-cart-plus me-2"></i>Предзаказ блюд из меню (необязательно)
                                 </label>
-                                <div class="menu-selection" style="background: rgba(230, 179, 37, 0.05); border: 1px solid rgba(230, 179, 37, 0.2); border-radius: 15px; padding: 1.5rem; margin-top: 1rem;">
+                                <div class="menu-selection"
+                                     style="background: rgba(230, 179, 37, 0.05); border: 1px solid rgba(230, 179, 37, 0.2); border-radius: 15px; padding: 1.5rem; margin-top: 1rem;">
                                     <div class="row">
                                         {% if form.menu_items %}
-                                            {% for item in form.menu_items %}
-                                                <div class="col-md-6 mb-3">
-                                                    <div class="menu-item-card" style="background: white; border: 1px solid rgba(230, 179, 37, 0.3); border-radius: 10px; padding: 1rem;">
-                                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                                            <h6 class="mb-0" style="color: #2E6E4F; font-weight: 600;">{{ item.name }}</h6>
-                                                            <span class="badge" style="background: #E6B325; color: white;">{{ item.price }} ₽</span>
-                                                        </div>
-                                                        <small class="text-muted d-block mb-2">{{ item.category.name }}</small>
-                                                        <div class="d-flex align-items-center">
-                                                            <label for="id_item_{{ item.id }}_quantity" class="form-label mb-0 me-2" style="font-size: 0.9rem;">Количество:</label>
-                                                            <input type="number" 
-                                                                   name="item_{{ item.id }}_quantity" 
-                                                                   id="id_item_{{ item.id }}_quantity"
-                                                                   class="form-control item-quantity" 
-                                                                   data-item-id="{{ item.id }}"
-                                                                   data-item-price="{{ item.price }}"
-                                                                   data-item-name="{{ item.name }}"
-                                                                   min="0" 
-                                                                   max="20" 
-                                                                   value="0"
-                                                                   style="width: 80px;"
-                                                                   onchange="calculateTotal()">
-                                                        </div>
-                                                    </div>
+                                        {% for item in form.menu_items %}
+                                        <div class="col-md-6 mb-3">
+                                            <div class="menu-item-card"
+                                                 style="background: white; border: 1px solid rgba(230, 179, 37, 0.3); border-radius: 10px; padding: 1rem;">
+                                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                                    <h6 class="mb-0" style="color: #2E6E4F; font-weight: 600;">{{
+                                                        item.name }}</h6>
+                                                    <span class="badge" style="background: #E6B325; color: white;">{{ item.price }} ₽</span>
                                                 </div>
-                                            {% endfor %}
-                                        {% else %}
-                                            <div class="col-12">
-                                                <p class="text-muted text-center mb-0">
-                                                    <i class="bi bi-info-circle me-2"></i>
-                                                    Блюда из меню временно недоступны
-                                                </p>
+                                                <small class="text-muted d-block mb-2">{{ item.category.name }}</small>
+                                                <div class="d-flex align-items-center">
+                                                    <label for="id_item_{{ item.id }}_quantity"
+                                                           class="form-label mb-0 me-2" style="font-size: 0.9rem;">Количество:</label>
+                                                    <input type="number"
+                                                           name="item_{{ item.id }}_quantity"
+                                                           id="id_item_{{ item.id }}_quantity"
+                                                           class="form-control item-quantity"
+                                                           data-item-id="{{ item.id }}"
+                                                           data-item-price="{{ item.price }}"
+                                                           data-item-name="{{ item.name }}"
+                                                           min="0"
+                                                           max="20"
+                                                           value="0"
+                                                           style="width: 80px;"
+                                                           onchange="calculateTotal()">
+                                                </div>
                                             </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        <div class="col-12">
+                                            <p class="text-muted text-center mb-0">
+                                                <i class="bi bi-info-circle me-2"></i>
+                                                Блюда из меню временно недоступны
+                                            </p>
+                                        </div>
                                         {% endif %}
                                     </div>
                                     {% if form.menu_items %}
-                                        <div class="text-center mt-3">
-                                            <small class="text-muted">
-                                                <i class="bi bi-info-circle me-1"></i>
-                                                Выбранные блюда будут приготовлены к вашему приходу
-                                            </small>
-                                        </div>
+                                    <div class="text-center mt-3">
+                                        <small class="text-muted">
+                                            <i class="bi bi-info-circle me-1"></i>
+                                            Выбранные блюда будут приготовлены к вашему приходу
+                                        </small>
+                                    </div>
                                     {% endif %}
                                 </div>
                             </div>
-                            
+
                             <!-- Секция предоплаты -->
                             <div class="form-group" id="deposit-section" style="display: none;">
                                 <label for="{{ form.deposit_amount.id_for_label }}" class="form-label">
@@ -565,26 +588,29 @@
                                 </label>
                                 {{ form.deposit_amount }}
                                 {% if form.deposit_amount.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.deposit_amount.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.deposit_amount.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
                                 <div class="form-text">
                                     <i class="bi bi-info-circle me-1"></i>
-                                    Предоплата требуется только при предзаказе блюд. Минимальная предоплата 500 ₽ или 30% от суммы заказа.
+                                    Предоплата требуется только при предзаказе блюд. Минимальная предоплата 500 ₽ или
+                                    30% от суммы заказа.
                                 </div>
-                                
+
                                 <!-- Информация о расчетах -->
-                                <div id="payment-info" style="background: rgba(46, 110, 79, 0.05); border: 1px solid rgba(46, 110, 79, 0.2); border-radius: 10px; padding: 1rem; margin-top: 1rem; display: none;">
+                                <div id="payment-info"
+                                     style="background: rgba(46, 110, 79, 0.05); border: 1px solid rgba(46, 110, 79, 0.2); border-radius: 10px; padding: 1rem; margin-top: 1rem; display: none;">
                                     <h6 style="color: #2E6E4F; margin-bottom: 0.5rem;">
                                         <i class="bi bi-calculator me-2"></i>Расчет предоплаты
                                     </h6>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <small class="text-muted">Сумма предзаказа:</small>
-                                            <div id="preorder-total" style="font-weight: bold; color: #E6B325;">0 ₽</div>
+                                            <div id="preorder-total" style="font-weight: bold; color: #E6B325;">0 ₽
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
                                             <small class="text-muted">Минимальная предоплата:</small>
@@ -593,13 +619,13 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <button type="submit" class="btn btn-booking">
                                 <i class="bi bi-calendar-check me-2"></i>
                                 {% if selected_item %}
-                                    Забронировать столик и заказать блюдо
+                                Забронировать столик и заказать блюдо
                                 {% else %}
-                                    Забронировать столик
+                                Забронировать столик
                                 {% endif %}
                             </button>
                         </form>
@@ -611,138 +637,138 @@
 </section>
 
 <script>
-function calculateTotal() {
-    let total = 0;
-    const quantityFields = document.querySelectorAll('.item-quantity');
-    
-    quantityFields.forEach(field => {
-        const quantity = parseInt(field.value) || 0;
-        const price = parseFloat(field.dataset.itemPrice) || 0;
-        total += quantity * price;
-    });
-    
-    // Обновляем отображение суммы предзаказа
-    document.getElementById('preorder-total').textContent = total + ' ₽';
-    
-    // Рассчитываем минимальную предоплату
-    let minDeposit = 500;
-    if (total > 0) {
-        minDeposit = Math.max(500, total * 0.3);
-    }
-    document.getElementById('min-deposit').textContent = Math.ceil(minDeposit) + ' ₽';
-    
-    // Показываем/скрываем блок с информацией
-    const paymentInfo = document.getElementById('payment-info');
-    if (total > 0) {
-        paymentInfo.style.display = 'block';
-    } else {
-        paymentInfo.style.display = 'none';
-    }
-    
-    // Устанавливаем минимальное значение в поле предоплаты только при предзаказе
-    const depositField = document.getElementById('{{ form.deposit_amount.id_for_label }}');
-    if (total > 0 && depositField && depositField.value < minDeposit) {
-        depositField.value = Math.ceil(minDeposit);
-    }
-    
-    // Скрываем/показываем секцию предоплаты
-    const depositSection = document.getElementById('deposit-section');
-    if (total > 0) {
-        depositSection.style.display = 'block';
-    } else {
-        depositSection.style.display = 'none';
-        if (depositField) {
-            depositField.value = '';
-        }
-    }
-}
+    function calculateTotal() {
+        let total = 0;
+        const quantityFields = document.querySelectorAll('.item-quantity');
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-    calculateTotal();
-    
-    // Автоматическая подсветка полей с ошибками
-    const formFields = document.querySelectorAll('.form-control');
-    formFields.forEach(field => {
-        // Проверяем, есть ли ошибки у поля
-        const errorElement = field.parentNode.querySelector('.invalid-feedback');
-        if (errorElement) {
-            field.classList.add('is-invalid');
-        } else if (field.value && !field.classList.contains('is-invalid')) {
-            field.classList.add('is-valid');
-        }
-        
-        // Добавляем обработчики для валидации в реальном времени
-        field.addEventListener('blur', function() {
-            validateField(this);
+        quantityFields.forEach(field => {
+            const quantity = parseInt(field.value) || 0;
+            const price = parseFloat(field.dataset.itemPrice) || 0;
+            total += quantity * price;
         });
-        
-        field.addEventListener('input', function() {
-            if (this.classList.contains('is-invalid')) {
-                this.classList.remove('is-invalid');
-                const errorElement = this.parentNode.querySelector('.invalid-feedback');
-                if (errorElement) {
-                    errorElement.style.display = 'none';
-                }
+
+        // Обновляем отображение суммы предзаказа
+        document.getElementById('preorder-total').textContent = total + ' ₽';
+
+        // Рассчитываем минимальную предоплату
+        let minDeposit = 500;
+        if (total > 0) {
+            minDeposit = Math.max(500, total * 0.3);
+        }
+        document.getElementById('min-deposit').textContent = Math.ceil(minDeposit) + ' ₽';
+
+        // Показываем/скрываем блок с информацией
+        const paymentInfo = document.getElementById('payment-info');
+        if (total > 0) {
+            paymentInfo.style.display = 'block';
+        } else {
+            paymentInfo.style.display = 'none';
+        }
+
+        // Устанавливаем минимальное значение в поле предоплаты только при предзаказе
+        const depositField = document.getElementById('{{ form.deposit_amount.id_for_label }}');
+        if (total > 0 && depositField && depositField.value < minDeposit) {
+            depositField.value = Math.ceil(minDeposit);
+        }
+
+        // Скрываем/показываем секцию предоплаты
+        const depositSection = document.getElementById('deposit-section');
+        if (total > 0) {
+            depositSection.style.display = 'block';
+        } else {
+            depositSection.style.display = 'none';
+            if (depositField) {
+                depositField.value = '';
             }
+        }
+    }
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        calculateTotal();
+
+        // Автоматическая подсветка полей с ошибками
+        const formFields = document.querySelectorAll('.form-control');
+        formFields.forEach(field => {
+            // Проверяем, есть ли ошибки у поля
+            const errorElement = field.parentNode.querySelector('.invalid-feedback');
+            if (errorElement) {
+                field.classList.add('is-invalid');
+            } else if (field.value && !field.classList.contains('is-invalid')) {
+                field.classList.add('is-valid');
+            }
+
+            // Добавляем обработчики для валидации в реальном времени
+            field.addEventListener('blur', function() {
+                validateField(this);
+            });
+
+            field.addEventListener('input', function() {
+                if (this.classList.contains('is-invalid')) {
+                    this.classList.remove('is-invalid');
+                    const errorElement = this.parentNode.querySelector('.invalid-feedback');
+                    if (errorElement) {
+                        errorElement.style.display = 'none';
+                    }
+                }
+            });
         });
     });
-});
 
-// Функция валидации поля
-function validateField(field) {
-    const fieldName = field.name;
-    const fieldValue = field.value.trim();
-    
-    // Убираем предыдущие классы
-    field.classList.remove('is-valid', 'is-invalid');
-    
-    // Простая валидация на клиенте
-    if (fieldName === 'name') {
-        if (fieldValue.length < 2) {
-            field.classList.add('is-invalid');
-            showFieldError(field, 'Имя должно содержать минимум 2 символа');
-        } else if (fieldValue.length > 50) {
-            field.classList.add('is-invalid');
-            showFieldError(field, 'Имя слишком длинное');
-        } else if (fieldValue) {
-            field.classList.add('is-valid');
-        }
-    } else if (fieldName === 'phone') {
-        const phoneClean = fieldValue.replace(/[\s\-\(\)\+]/g, '');
-        if (phoneClean.length < 10) {
-            field.classList.add('is-invalid');
-            showFieldError(field, 'Номер телефона должен содержать минимум 10 цифр');
-        } else if (phoneClean.length > 11) {
-            field.classList.add('is-invalid');
-            showFieldError(field, 'Номер телефона слишком длинный');
-        } else if (phoneClean && /^\d+$/.test(phoneClean)) {
-            field.classList.add('is-valid');
-        }
-    } else if (fieldName === 'guests_count') {
-        const count = parseInt(fieldValue);
-        if (count < 1) {
-            field.classList.add('is-invalid');
-            showFieldError(field, 'Количество гостей должно быть не менее 1');
-        } else if (count > 20) {
-            field.classList.add('is-invalid');
-            showFieldError(field, 'Максимальное количество гостей - 20');
-        } else if (count) {
-            field.classList.add('is-valid');
+    // Функция валидации поля
+    function validateField(field) {
+        const fieldName = field.name;
+        const fieldValue = field.value.trim();
+
+        // Убираем предыдущие классы
+        field.classList.remove('is-valid', 'is-invalid');
+
+        // Простая валидация на клиенте
+        if (fieldName === 'name') {
+            if (fieldValue.length < 2) {
+                field.classList.add('is-invalid');
+                showFieldError(field, 'Имя должно содержать минимум 2 символа');
+            } else if (fieldValue.length > 50) {
+                field.classList.add('is-invalid');
+                showFieldError(field, 'Имя слишком длинное');
+            } else if (fieldValue) {
+                field.classList.add('is-valid');
+            }
+        } else if (fieldName === 'phone') {
+            const phoneClean = fieldValue.replace(/[\s\-\(\)\+]/g, '');
+            if (phoneClean.length < 10) {
+                field.classList.add('is-invalid');
+                showFieldError(field, 'Номер телефона должен содержать минимум 10 цифр');
+            } else if (phoneClean.length > 11) {
+                field.classList.add('is-invalid');
+                showFieldError(field, 'Номер телефона слишком длинный');
+            } else if (phoneClean && /^\d+$/.test(phoneClean)) {
+                field.classList.add('is-valid');
+            }
+        } else if (fieldName === 'guests_count') {
+            const count = parseInt(fieldValue);
+            if (count < 1) {
+                field.classList.add('is-invalid');
+                showFieldError(field, 'Количество гостей должно быть не менее 1');
+            } else if (count > 20) {
+                field.classList.add('is-invalid');
+                showFieldError(field, 'Максимальное количество гостей - 20');
+            } else if (count) {
+                field.classList.add('is-valid');
+            }
         }
     }
-}
 
-// Функция показа ошибки поля
-function showFieldError(field, message) {
-    let errorElement = field.parentNode.querySelector('.invalid-feedback');
-    if (!errorElement) {
-        errorElement = document.createElement('div');
-        errorElement.className = 'invalid-feedback';
-        field.parentNode.appendChild(errorElement);
+    // Функция показа ошибки поля
+    function showFieldError(field, message) {
+        let errorElement = field.parentNode.querySelector('.invalid-feedback');
+        if (!errorElement) {
+            errorElement = document.createElement('div');
+            errorElement.className = 'invalid-feedback';
+            field.parentNode.appendChild(errorElement);
+        }
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
     }
-    errorElement.textContent = message;
-    errorElement.style.display = 'block';
-}
 </script>
 {% endblock %} 
