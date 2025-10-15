@@ -10,7 +10,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--message",
             type=str,
-            default="Тестовое сообщение от Django приложения Dzūkija",
+            default="Тестовое сообщение от Django приложения Žemaičiai",
             help="Текст сообщения для отправки",
         )
 

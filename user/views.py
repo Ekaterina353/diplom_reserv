@@ -32,7 +32,7 @@ def register(request):
             # Автоматически входим в систему после регистрации
             login(request, user)
             messages.success(
-                request, "Регистрация прошла успешно! Добро пожаловать в Dzūkija!"
+                request, "Регистрация прошла успешно! Добро пожаловать в Žemaičiai!"
             )
             return redirect("user:profile")
     else:

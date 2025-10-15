@@ -36,7 +36,7 @@ class MenuListView(ListView):
                 )
             except MenuCategory.DoesNotExist:
                 pass
-        context["page_title"] = "Меню ресторана Dzūkija"
+        context["page_title"] = "Меню ресторана Žemaičiai"
         context["page_description"] = "Традиционные литовские блюда и европейская кухня"
         return context
 
@@ -111,7 +111,7 @@ def menu_search(request):
         "vegetarian_filter": vegetarian_filter,
         "spicy_filter": spicy_filter,
         "page_title": "Поиск по меню",
-        "page_description": "Найдите любимые блюда в меню ресторана Dzūkija",
+        "page_description": "Найдите любимые блюда в меню ресторана Žemaičiai",
     }
 
     return render(request, "menu/menu_search.html", context)

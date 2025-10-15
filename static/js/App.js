@@ -22,7 +22,7 @@ const App = () => {
   // Mock content for pages
   const pageContent = {
     main: {
-      title: "Добро пожаловать в Dzūkija",
+      title: "Добро пожаловать в Žemaičiai",
       description: "Ресторан литовской кухни в Краснодаре. Мы предлагаем аутентичные блюда региона Жемайтия и уютную атмосферу литовского гостеприимства.",
       services: [
         "Традиционная литовская кухня",
@@ -39,7 +39,7 @@ const App = () => {
     },
     about: {
       title: "О ресторане",
-      history: "Ресторан Dzūkija был основан в 2018 году с целью приблизить жителей Краснодара к богатой культуре Литвы. Название происходит от древнего региона Дзукия на юге Литвы.",
+      history: "Ресторан Žemaičiai был основан в 2024 году с целью приблизить жителей Краснодара к богатой культуре Литвы. Название происходит от древнего региона Дзукия на юге Литвы.",
       mission: "Познакомить российскую публику с разнообразием литовской кухни и культуры через вкус, интерьер и обслуживание.",
       values: [
         "Сохранение традиций",
@@ -80,7 +80,7 @@ const App = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
       <div className="container">
         <a className="navbar-brand" href="#" onClick={() => setActivePage("main")}>
-          <strong>Dzūkija</strong>
+          <strong>Žemaičiai</strong>
         </a>
         <button
           className="navbar-toggler"
@@ -594,7 +594,7 @@ const App = () => {
           </div>
         </div>
         <hr className="border-white my-4 opacity-25" />
-        <p className="text-center text-white-50 mb-0">&copy; 2025 Dzūkija. Все права защищены.</p>
+        <p className="text-center text-white-50 mb-0">&copy; 2025 Žemaičiai. Все права защищены.</p>
       </div>
     </footer>
   );

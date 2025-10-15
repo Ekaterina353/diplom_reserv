@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# 🖥️ Скрипт для удаленной настройки VM test2 (130.193.34.169)
+# 🖥️ Скрипт для удаленной настройки VM test2 (89.169.160.116)
 # Использование: ./scripts/setup-vm-remote.sh
 
 VM_NAME="test2"
-VM_IP="130.193.34.169"
+VM_IP="89.169.160.116"
 VM_USER="root"  # или ваш пользователь
 
 echo "🚀 Настройка виртуальной машины $VM_NAME ($VM_IP)..."
@@ -35,9 +35,9 @@ echo "📋 Следующие шаги:"
 echo "1. Добавьте публичный SSH ключ в ~/.ssh/authorized_keys пользователя deploy"
 echo "2. Настройте .env файл в /home/deploy/resto-reserve/"
 echo "3. Добавьте секреты в GitHub Actions:"
-echo "   - DEPLOY_HOST: 130.193.34.169"
+echo "   - DEPLOY_HOST: 89.169.160.116"
 echo "   - DEPLOY_USER: deploy"
 echo "   - DEPLOY_KEY: [приватный SSH ключ]"
 echo ""
 echo "🌐 После настройки приложение будет доступно по адресу:"
-echo "   http://130.193.34.169"
+echo "   http://89.169.160.116"

@@ -156,8 +156,8 @@ LOGIN_REDIRECT_URL = "/profile/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Настройки админки
-ADMIN_SITE_HEADER = "Администрирование Dzūkija"
-ADMIN_SITE_TITLE = "Dzūkija Admin"
+ADMIN_SITE_HEADER = "Администрирование Žemaičiai"
+ADMIN_SITE_TITLE = "Žemaičiai Admin"
 ADMIN_INDEX_TITLE = "Панель управления рестораном"
 
 # Telegram Bot settings

@@ -12,4 +12,4 @@ SET client_encoding = 'UTF8';
 -- GRANT ALL PRIVILEGES ON DATABASE resto_reserve TO resto_user;
 
 -- Комментарий для информации
-COMMENT ON DATABASE resto_reserve IS 'База данных для системы бронирования ресторана Dzūkija';
+COMMENT ON DATABASE resto_reserve IS 'База данных для системы бронирования ресторана Žemaičiai';

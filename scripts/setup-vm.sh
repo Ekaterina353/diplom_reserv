@@ -5,7 +5,7 @@
 
 set -e
 
-echo "🚀 Настройка виртуальной машины для деплоя Dzūkija..."
+echo "🚀 Настройка виртуальной машины для деплоя Žemaičiai..."
 
 # Цвета для вывода
 RED='\033[0;31m'
@@ -167,7 +167,7 @@ dpkg-reconfigure -plow unattended-upgrades
 log_info "Создание systemd сервиса..."
 cat > /etc/systemd/system/dzukija.service << 'EOF'
 [Unit]
-Description=Dzūkija Restaurant Booking System
+Description=Žemaičiai Restaurant Booking System
 Requires=docker.service
 After=docker.service
 
@@ -223,7 +223,7 @@ echo "0 2 * * * /home/deploy/backup.sh" | crontab -u deploy -
 # Создание README для сервера
 log_info "Создание документации..."
 cat > /home/deploy/README.md << 'EOF'
-# 🖥️ Dzūkija Server Setup
+# 🖥️ Žemaičiai Server Setup
 
 ## 📋 Информация о сервере
 

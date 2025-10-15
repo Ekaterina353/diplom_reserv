@@ -194,6 +194,6 @@ class SiteContentAdmin(admin.ModelAdmin):
 
 
 # Настройки админки
-admin.site.site_header = "Администрирование Dzūkija"
-admin.site.site_title = "Dzūkija Admin"
+admin.site.site_header = "Администрирование Žemaičiai"
+admin.site.site_title = "Žemaičiai Admin"
 admin.site.index_title = "Панель управления рестораном"

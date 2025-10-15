@@ -68,7 +68,7 @@ def format_contact_message(name, email, subject, message):
 {message}
 
 ---
-<i>Отправлено с сайта Dzūkija</i>
+<i>Отправлено с сайта Žemaičiai</i>
 """
     return formatted_message.strip()
 
