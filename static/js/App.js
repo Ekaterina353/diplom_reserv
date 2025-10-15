@@ -33,7 +33,7 @@ const App = () => {
       contact: {
         address: "ул. Красная, 123, Краснодар",
         phone: "+7 (988) 123-45-67",
-        email: "info@dzukija.ru",
+        email: "info@zemaiciai.ru",
         hours: "Ежедневно с 10:00 до 22:00"
       }
     },
@@ -571,7 +571,7 @@ const App = () => {
             <address className="text-white-50">
               <p><i className="bi bi-geo-alt-fill me-2"></i>ул. Красная, 123, Краснодар</p>
               <p><i className="bi bi-telephone-fill me-2"></i>+7 (988) 123-45-67</p>
-              <p><i className="bi bi-envelope-fill me-2"></i>info@dzukija.ru</p>
+              <p><i className="bi bi-envelope-fill me-2"></i>info@zemaiciai.ru</p>
             </address>
           </div>
           <div className="col-md-4 mb-3 mb-md-0">

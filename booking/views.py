@@ -32,7 +32,7 @@ def home(request):
         "contact_info": {
             "address": "ул. Красная, 123, Краснодар",
             "phone": "+7 (988) 123-45-67",
-            "email": "info@dzukija.ru",
+            "email": "info@zemaiciai.ru",
             "hours": "Ежедневно с 10:00 до 22:00",
         },
     }
