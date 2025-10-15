@@ -15,7 +15,7 @@
         backdrop-filter: blur(10px);
         border-radius: 20px;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        border: 2px solid #FFB841;
+        border: 2px solid #E6B325;
         overflow: hidden;
         position: relative;
     }
@@ -27,13 +27,13 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, #FFB841, #F4D03F, #FFB841);
+        background: linear-gradient(90deg, #E6B325, #F4D03F, #E6B325);
         background-size: 200% 100%;
         animation: shimmer 3s ease-in-out infinite;
     }
     
     .booking-header {
-        background: linear-gradient(135deg, #FFB841, #D4A017);
+        background: linear-gradient(135deg, #E6B325, #D4A017);
         color: white;
         padding: 2rem;
         text-align: center;
@@ -100,7 +100,7 @@
     }
     
     .form-control:focus {
-        border-color: #FFB841;
+        border-color: #E6B325;
         box-shadow: 0 0 0 0.2rem rgba(230, 179, 37, 0.25);
         outline: none;
     }
@@ -154,7 +154,7 @@
     }
     
     .btn-booking {
-        background: linear-gradient(45deg, #FFB841, #F4D03F);
+        background: linear-gradient(45deg, #E6B325, #F4D03F);
         border: none;
         color: #1A3D2E;
         padding: 1rem 2rem;
@@ -215,7 +215,7 @@
     .ornament-divider {
         text-align: center;
         margin: 2rem 0;
-        color: #FFB841;
+        color: #E6B325;
         font-size: 1.5rem;
         opacity: 0.7;
     }
@@ -271,9 +271,9 @@
                          {% endif %}
                         
                         {% if selected_item %}
-                            <div class="alert alert-info" style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #FFB841; color: #2E6E4F;">
+                            <div class="alert alert-info" style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #E6B325; color: #2E6E4F;">
                                 <div class="d-flex align-items-center">
-                                    <i class="bi bi-cart-check me-3" style="font-size: 1.5rem; color: #FFB841;"></i>
+                                    <i class="bi bi-cart-check me-3" style="font-size: 1.5rem; color: #E6B325;"></i>
                                     <div>
                                         <h5 class="mb-1">Выбранное блюдо</h5>
                                         <p class="mb-0">
@@ -301,8 +301,8 @@
                                 </div>
                                 <div class="col-md-4 text-center">
                                     <div class="table-stat" style="background: rgba(230, 179, 37, 0.1); border-radius: 10px; padding: 1rem;">
-                                        <i class="bi bi-people-fill" style="font-size: 1.5rem; color: #FFB841;"></i>
-                                        <div class="table-stat-number" style="font-size: 1.2rem; font-weight: bold; color: #FFB841;">15</div>
+                                        <i class="bi bi-people-fill" style="font-size: 1.5rem; color: #E6B325;"></i>
+                                        <div class="table-stat-number" style="font-size: 1.2rem; font-weight: bold; color: #E6B325;">15</div>
                                         <div class="table-stat-label" style="font-size: 0.9rem; color: #666;">Столиков на 4</div>
                                     </div>
                                 </div>
@@ -346,7 +346,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="table-category">
-                                            <h6 style="color: #FFB841; font-weight: 600;">
+                                            <h6 style="color: #E6B325; font-weight: 600;">
                                                 <i class="bi bi-people me-2"></i>Семейные столики
                                             </h6>
                                             <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">
@@ -517,7 +517,7 @@
                                                     <div class="menu-item-card" style="background: white; border: 1px solid rgba(230, 179, 37, 0.3); border-radius: 10px; padding: 1rem;">
                                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                                             <h6 class="mb-0" style="color: #2E6E4F; font-weight: 600;">{{ item.name }}</h6>
-                                                            <span class="badge" style="background: #FFB841; color: white;">{{ item.price }} ₽</span>
+                                                            <span class="badge" style="background: #E6B325; color: white;">{{ item.price }} ₽</span>
                                                         </div>
                                                         <small class="text-muted d-block mb-2">{{ item.category.name }}</small>
                                                         <div class="d-flex align-items-center">
@@ -584,7 +584,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <small class="text-muted">Сумма предзаказа:</small>
-                                            <div id="preorder-total" style="font-weight: bold; color: #FFB841;">0 ₽</div>
+                                            <div id="preorder-total" style="font-weight: bold; color: #E6B325;">0 ₽</div>
                                         </div>
                                         <div class="col-md-6">
                                             <small class="text-muted">Минимальная предоплата:</small>
