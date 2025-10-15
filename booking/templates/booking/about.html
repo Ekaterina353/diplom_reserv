@@ -18,11 +18,11 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         overflow: hidden;
         margin: 2rem 0;
-        border: 2px solid #E6B325;
+        border: 2px solid #FFB841;
     }
     
     .mission-table-header {
-        background: linear-gradient(135deg, #E6B325, #D4A017);
+        background: linear-gradient(135deg, #FFB841, #D4A017);
         color: white;
         padding: 2rem;
         text-align: center;
@@ -64,7 +64,7 @@
         top: 0;
         bottom: 0;
         width: 4px;
-        background: linear-gradient(180deg, #E6B325, #2E6E4F);
+        background: linear-gradient(180deg, #FFB841, #2E6E4F);
         opacity: 0;
         transition: opacity 0.3s ease;
     }
@@ -77,7 +77,7 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #E6B325, #F4D03F);
+        background: linear-gradient(135deg, #FFB841, #F4D03F);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -132,7 +132,7 @@
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(90deg, #E6B325, #2E6E4F, #E6B325);
+        background: linear-gradient(90deg, #FFB841, #2E6E4F, #FFB841);
         background-size: 200% 100%;
         animation: shimmer 3s ease-in-out infinite;
     }
@@ -140,12 +140,12 @@
     .value-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 35px rgba(230, 179, 37, 0.2);
-        border-color: #E6B325;
+        border-color: #FFB841;
     }
     
     .value-icon {
         font-size: 3rem;
-        color: #E6B325;
+        color: #FFB841;
         margin-bottom: 1rem;
     }
     
@@ -170,7 +170,7 @@
     .ornament-divider {
         text-align: center;
         margin: 3rem 0;
-        color: #E6B325;
+        color: #FFB841;
         font-size: 2rem;
         opacity: 0.7;
     }
@@ -313,7 +313,7 @@
         <div class="row g-4">
             {% for member in team_members %}
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" style="border: 2px solid #E6B325;">
+                    <div class="card h-100 shadow-sm" style="border: 2px solid #FFB841;">
                         {% if member.photo %}
                             <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="card-img-top">
                         {% else %}

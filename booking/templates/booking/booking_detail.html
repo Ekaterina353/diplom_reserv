@@ -15,7 +15,7 @@
         backdrop-filter: blur(10px);
         border-radius: 20px;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        border: 2px solid #E6B325;
+        border: 2px solid #FFB841;
         overflow: hidden;
         position: relative;
     }
@@ -27,13 +27,13 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, #E6B325, #F4D03F, #E6B325);
+        background: linear-gradient(90deg, #FFB841, #F4D03F, #FFB841);
         background-size: 200% 100%;
         animation: shimmer 3s ease-in-out infinite;
     }
     
     .booking-detail-header {
-        background: linear-gradient(135deg, #E6B325, #D4A017);
+        background: linear-gradient(135deg, #FFB841, #D4A017);
         color: white;
         padding: 2rem;
         text-align: center;
@@ -183,8 +183,8 @@
     
     .btn-back {
         background: transparent;
-        border: 2px solid #E6B325;
-        color: #E6B325;
+        border: 2px solid #FFB841;
+        color: #FFB841;
         padding: 1rem 2rem;
         font-size: 1.1rem;
         font-weight: 600;
@@ -195,7 +195,7 @@
     }
     
     .btn-back:hover {
-        background: #E6B325;
+        background: #FFB841;
         color: #1A3D2E;
         transform: translateY(-2px);
         text-decoration: none;
@@ -255,7 +255,7 @@
     .ornament-divider {
         text-align: center;
         margin: 2rem 0;
-        color: #E6B325;
+        color: #FFB841;
         font-size: 2rem;
         opacity: 0.7;
     }
@@ -432,7 +432,7 @@
                                 <i class="bi bi-arrow-left me-2"></i>Вернуться к моим бронированиям
                             </a>
                                        {% if booking.status == 'pending' and booking.has_preorder %}
-               <div class="alert alert-info" style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #E6B325; color: #2E6E4F;">
+               <div class="alert alert-info" style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #FFB841; color: #2E6E4F;">
                    <i class="bi bi-info-circle me-2"></i>
                    <strong>Ожидание подтверждения предоплаты</strong><br>
                    Ваша предоплата будет подтверждена администратором после поступления денежных средств.

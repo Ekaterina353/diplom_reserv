@@ -6,7 +6,7 @@
 VM_NAME="test2"
 VM_IP="89.169.160.116"
 VM_USER="root"  # или ваш пользователь
-SSH_KEY_PATH="C:/Users/Ксюша/.ssh/dzukija_deploy.pub"
+SSH_KEY_PATH="C:\Users\Екатерина\.ssh\ssh-key-1759945161226\ssh-key-1759945161226
 
 echo "🔑 Добавление SSH ключа на VM $VM_NAME ($VM_IP)..."
 
@@ -43,4 +43,4 @@ EOF
 echo "✅ SSH ключ добавлен на VM $VM_NAME!"
 echo ""
 echo "🧪 Тестирование подключения..."
-ssh -i "C:/Users/Ксюша/.ssh/dzukija_deploy" deploy@$VM_IP "echo '✅ Подключение по SSH к $VM_NAME работает!'"
+ssh -i "C:\Users\Екатерина\.ssh\ssh-key-1759945161226\ssh-key-1759945161226" deploy@$VM_IP "echo '✅ Подключение по SSH к $VM_NAME работает!'"
