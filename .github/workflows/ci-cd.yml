@@ -19,10 +19,10 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Install dependencies
-        run: |
-          pip install flake8 psycopg[binary]
-          pip install -r requirements.txt
+#      - name: Install dependencies
+#        run: |
+#          pip install flake8 psycopg[binary]
+#          pip install -r requirements.txt
 
       - name: Run linter (flake8)
         run: |
