@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop, work/work ]
+    branches: [ main, develop, work ]
   pull_request:
-    branches: [ main, develop, work/work ]
+    branches: [ main, develop, work ]
 
 jobs:
   ci:
@@ -113,7 +113,7 @@ jobs:
             # Создать папку resto-reserve и клонировать репозиторий, если нужно
             if [ ! -d "resto-reserve" ]; then
               echo "📁 Папка resto-reserve не найдена. Клонирую репозиторий..."
-              git clone https://github.com/oksanafedorova07/resto-reserve.git resto-reserve
+              git clone https://github.com/Ekaterina353/diplom_reserv.git resto-reserve
             fi
 
             cd resto-reserve || exit
