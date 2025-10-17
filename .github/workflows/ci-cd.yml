@@ -1,10 +1,6 @@
 name: CI/CD Pipeline
 
-on:
-  push:
-    branches: [ main, develop, work ]
-  pull_request:
-    branches: [ main, develop, work ]
+on: [ push, pull_request ]
 
 jobs:
   lint:
