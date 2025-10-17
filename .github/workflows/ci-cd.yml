@@ -24,10 +24,6 @@ jobs:
       - name: Run Flake8
         run: poetry run flake8 .
 
-      - name: Run linter (flake8)
-        run: |
-          flake8 . --exclude=env,migrations,__pycache__
-
       - name: Запустить тесты
         run: |
           python manage.py test --settings=config.settings
@@ -57,7 +53,7 @@ jobs:
           --health-retries=5
 
   build:
-    name: 🐳 Build Docker Images
+    name: Build Docker Images
     runs-on: ubuntu-latest
     needs: ci
     steps:
@@ -72,7 +68,7 @@ jobs:
           docker build -t resto-reserve:latest .
 
   deploy:
-    name: 🚀 Развертывание на производственном сервере
+    name: Развертывание на производственном сервере
     runs-on: ubuntu-latest
     needs: [ci, build]
     if: github.event_name == 'push'
