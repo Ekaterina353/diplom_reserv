@@ -21,8 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install flake8 psycopg[binary]
-          pip install -r requirements.txt 
+          python -m pip install --upgrade pip
+          pip install --no-cache-dir -r requirements.txt 
 
       - name: Run linter (flake8)
         run: |
