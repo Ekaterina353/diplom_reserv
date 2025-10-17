@@ -238,18 +238,18 @@
                         <h1 class="success-title">Бронирование подтверждено!</h1>
                         <div class="success-subtitle">Žemaičiai</div>
                     </div>
-                    
+
                     <div class="success-body">
                         <p class="lead">
                             {% if booking.has_preorder %}
-                                Спасибо за бронирование! Для подтверждения предзаказа необходимо внести предоплату.
+                            Спасибо за бронирование! Для подтверждения предзаказа необходимо внести предоплату.
                             {% else %}
-                                Спасибо за бронирование! Ваш столик успешно забронирован.
+                            Спасибо за бронирование! Ваш столик успешно забронирован.
                             {% endif %}
                         </p>
-                        
+
                         <div class="ornament-divider">❦ ❦ ❦</div>
-                        
+
                         <div class="booking-details">
                             <h3>
                                 <i class="bi bi-calendar-check me-2"></i>
@@ -263,7 +263,7 @@
                                     </div>
                                     <p class="detail-value">{{ booking.name }}</p>
                                 </div>
-                                
+
                                 <div class="detail-item">
                                     <div class="detail-label">
                                         <i class="bi bi-telephone"></i>
@@ -271,7 +271,7 @@
                                     </div>
                                     <p class="detail-value">{{ booking.phone }}</p>
                                 </div>
-                                
+
                                 <div class="detail-item">
                                     <div class="detail-label">
                                         <i class="bi bi-calendar-event"></i>
@@ -279,7 +279,7 @@
                                     </div>
                                     <p class="detail-value">{{ booking.date|date:"d.m.Y" }}</p>
                                 </div>
-                                
+
                                 <div class="detail-item">
                                     <div class="detail-label">
                                         <i class="bi bi-clock"></i>
@@ -287,15 +287,16 @@
                                     </div>
                                     <p class="detail-value">{{ booking.time|time:"H:i" }}</p>
                                 </div>
-                                
+
                                 <div class="detail-item">
                                     <div class="detail-label">
                                         <i class="bi bi-table"></i>
                                         Столик
                                     </div>
-                                    <p class="detail-value">№{{ booking.table.number }} ({{ booking.table.seats }} мест)</p>
+                                    <p class="detail-value">№{{ booking.table.number }} ({{ booking.table.seats }}
+                                        мест)</p>
                                 </div>
-                                
+
                                 <div class="detail-item">
                                     <div class="detail-label">
                                         <i class="bi bi-people"></i>
@@ -303,7 +304,7 @@
                                     </div>
                                     <p class="detail-value">{{ booking.guests_count }} чел.</p>
                                 </div>
-                                
+
                                 {% if booking.has_preorder %}
                                 <div class="detail-item">
                                     <div class="detail-label">
@@ -313,7 +314,7 @@
                                     <p class="detail-value">{{ booking.preorder_total }} ₽</p>
                                 </div>
                                 {% endif %}
-                                
+
                                 <div class="detail-item">
                                     <div class="detail-label">
                                         <i class="bi bi-credit-card"></i>
@@ -321,7 +322,7 @@
                                     </div>
                                     <p class="detail-value">{{ booking.deposit_amount }} ₽</p>
                                 </div>
-                                
+
                                 <div class="detail-item">
                                     <div class="detail-label">
                                         <i class="bi bi-info-circle"></i>
@@ -329,37 +330,40 @@
                                     </div>
                                     <p class="detail-value">
                                         {% if booking.status == 'pending' %}
-                                            <span style="color: #ffc107;">Ожидает предоплаты</span>
+                                        <span style="color: #ffc107;">Ожидает предоплаты</span>
                                         {% elif booking.status == 'paid' %}
-                                            <span style="color: #28a745;">Предоплата внесена</span>
+                                        <span style="color: #28a745;">Предоплата внесена</span>
                                         {% elif booking.status == 'confirmed' %}
-                                            <span style="color: #17a2b8;">Подтверждено</span>
+                                        <span style="color: #17a2b8;">Подтверждено</span>
                                         {% else %}
-                                            <span style="color: #6c757d;">Завершено</span>
+                                        <span style="color: #6c757d;">Завершено</span>
                                         {% endif %}
                                     </p>
                                 </div>
                             </div>
-                            
+
                             {% if booking.comments %}
-                                <div class="detail-item" style="grid-column: 1 / -1; margin-top: 1rem;">
-                                    <div class="detail-label">
-                                        <i class="bi bi-chat-text"></i>
-                                        Дополнительная информация
-                                    </div>
-                                    <p class="detail-value" style="white-space: pre-line;">{{ booking.comments }}</p>
+                            <div class="detail-item" style="grid-column: 1 / -1; margin-top: 1rem;">
+                                <div class="detail-label">
+                                    <i class="bi bi-chat-text"></i>
+                                    Дополнительная информация
                                 </div>
+                                <p class="detail-value" style="white-space: pre-line;">{{ booking.comments }}</p>
+                            </div>
                             {% endif %}
                         </div>
-                        
+
                         {% if booking.status == 'pending' and booking.has_preorder %}
-                        <div class="alert alert-warning" style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; color: #856404; margin: 2rem 0;">
+                        <div class="alert alert-warning"
+                             style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; color: #856404; margin: 2rem 0;">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-exclamation-triangle me-3" style="font-size: 1.5rem; color: #ffc107;"></i>
+                                <i class="bi bi-exclamation-triangle me-3"
+                                   style="font-size: 1.5rem; color: #ffc107;"></i>
                                 <div>
                                     <h5 class="mb-1">Требуется предоплата</h5>
                                     <p class="mb-0">
-                                        Для подтверждения предзаказа необходимо внести предоплату в размере <strong>{{ booking.deposit_amount }} ₽</strong>.
+                                        Для подтверждения предзаказа необходимо внести предоплату в размере <strong>{{
+                                        booking.deposit_amount }} ₽</strong>.
                                         <br>
                                         <small>Свяжитесь с нами по телефону для внесения предоплаты.</small>
                                     </p>
@@ -367,7 +371,7 @@
                             </div>
                         </div>
                         {% endif %}
-                        
+
                         <div class="success-actions">
                             <a href="{% url 'booking:booking' %}" class="btn btn-success">
                                 <i class="bi bi-calendar-plus"></i>

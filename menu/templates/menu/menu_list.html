@@ -245,92 +245,92 @@
                 <i class="bi bi-grid me-2"></i>Все блюда
             </a>
             {% for cat in categories %}
-                <a href="{% url 'menu:menu_list' %}?category={{ cat.id }}" 
-                   class="category-tab {% if category == cat %}active{% endif %}">
-                    <i class="bi bi-{{ cat.icon|default:'grid' }} me-2"></i>{{ cat.name }}
-                </a>
+            <a href="{% url 'menu:menu_list' %}?category={{ cat.id }}"
+               class="category-tab {% if category == cat %}active{% endif %}">
+                <i class="bi bi-{{ cat.icon|default:'grid' }} me-2"></i>{{ cat.name }}
+            </a>
             {% endfor %}
         </div>
 
         <!-- Список блюд по категориям -->
         {% if categories %}
-            {% for category in categories %}
-                {% if category.items.all %}
-                    <div class="category-section mb-5">
-                        <h2 class="category-title text-center mb-4" style="color: #2E6E4F; font-family: 'Cinzel', serif;">
-                            <i class="bi bi-{{ category.icon|default:'grid' }} me-2"></i>
-                            {{ category.name }}
-                        </h2>
-                        {% if category.description %}
-                            <p class="category-description text-center mb-4" style="color: #666; font-style: italic;">
-                                {{ category.description }}
-                            </p>
+        {% for category in categories %}
+        {% if category.items.all %}
+        <div class="category-section mb-5">
+            <h2 class="category-title text-center mb-4" style="color: #2E6E4F; font-family: 'Cinzel', serif;">
+                <i class="bi bi-{{ category.icon|default:'grid' }} me-2"></i>
+                {{ category.name }}
+            </h2>
+            {% if category.description %}
+            <p class="category-description text-center mb-4" style="color: #666; font-style: italic;">
+                {{ category.description }}
+            </p>
+            {% endif %}
+
+            <div class="menu-grid">
+                {% for item in category.items.all %}
+                {% if item.is_available %}
+                <a href="{% url 'menu:item_detail' item.pk %}" class="text-decoration-none">
+                    <div class="menu-item-card">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-item-image">
+                        {% else %}
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=250&fit=crop"
+                             alt="{{ item.name }}"
+                             class="menu-item-image"
+                             onerror="this.src='https://via.placeholder.com/400x250/8B4513/FFFFFF?text={{ item.name|urlencode }}'">
                         {% endif %}
-                        
-                        <div class="menu-grid">
-                            {% for item in category.items.all %}
-                                {% if item.is_available %}
-                                    <a href="{% url 'menu:item_detail' item.pk %}" class="text-decoration-none">
-                                        <div class="menu-item-card">
-                                            {% if item.image %}
-                                                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-item-image">
-                                            {% else %}
-                                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=250&fit=crop" 
-                                                     alt="{{ item.name }}" 
-                                                     class="menu-item-image"
-                                                     onerror="this.src='https://via.placeholder.com/400x250/8B4513/FFFFFF?text={{ item.name|urlencode }}'">
-                                            {% endif %}
-                                            
-                                            <div class="menu-item-body">
-                                                <h3 class="menu-item-title">{{ item.name }}</h3>
-                                                <p class="menu-item-description">{{ item.description }}</p>
-                                                
-                                                <div class="menu-item-details">
-                                                    <div>
-                                                        <div class="menu-item-price">{{ item.price }} ₽</div>
-                                                        <div class="menu-item-weight">{{ item.weight }}</div>
-                                                    </div>
-                                                    <div>
-                                                        {% if item.is_vegetarian %}
-                                                            <span class="badge bg-success me-1">Вегетарианское</span>
-                                                        {% endif %}
-                                                        {% if item.is_spicy %}
-                                                            <div class="menu-item-spicy">
-                                                                <i class="bi bi-fire spicy-icon"></i>
-                                                                Острое
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="text-center mt-3">
+
+                        <div class="menu-item-body">
+                            <h3 class="menu-item-title">{{ item.name }}</h3>
+                            <p class="menu-item-description">{{ item.description }}</p>
+
+                            <div class="menu-item-details">
+                                <div>
+                                    <div class="menu-item-price">{{ item.price }} ₽</div>
+                                    <div class="menu-item-weight">{{ item.weight }}</div>
+                                </div>
+                                <div>
+                                    {% if item.is_vegetarian %}
+                                    <span class="badge bg-success me-1">Вегетарианское</span>
+                                    {% endif %}
+                                    {% if item.is_spicy %}
+                                    <div class="menu-item-spicy">
+                                        <i class="bi bi-fire spicy-icon"></i>
+                                        Острое
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-3">
                                                     <span class="btn btn-outline-primary btn-sm">
                                                         <i class="bi bi-eye me-1"></i>Подробнее
                                                     </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                {% endif %}
-                            {% endfor %}
+                            </div>
                         </div>
-                        
-                        {% if not forloop.last %}
-                            <div class="ornament-divider">❦ ❦ ❦</div>
-                        {% endif %}
                     </div>
+                </a>
                 {% endif %}
-            {% endfor %}
-        {% else %}
-            <div class="no-items-message">
-                <i class="bi bi-emoji-frown" style="font-size: 3rem; color: #E6B325; margin-bottom: 1rem;"></i>
-                <h3>Блюда не найдены</h3>
-                <p>В меню пока нет блюд. Пожалуйста, загляните позже.</p>
+                {% endfor %}
             </div>
+
+            {% if not forloop.last %}
+            <div class="ornament-divider">❦ ❦ ❦</div>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="no-items-message">
+            <i class="bi bi-emoji-frown" style="font-size: 3rem; color: #E6B325; margin-bottom: 1rem;"></i>
+            <h3>Блюда не найдены</h3>
+            <p>В меню пока нет блюд. Пожалуйста, загляните позже.</p>
+        </div>
         {% endif %}
 
         <div class="ornament-divider">❦ ❦ ❦</div>
-        
+
         <!-- Дополнительная информация -->
         <div class="row mt-5">
             <div class="col-md-6">
@@ -341,7 +341,7 @@
                             О нашем меню
                         </h5>
                         <p class="card-text">
-                            Все блюда готовятся из свежих ингредиентов по традиционным литовским рецептам. 
+                            Все блюда готовятся из свежих ингредиентов по традиционным литовским рецептам.
                             Мы используем только качественные продукты от проверенных поставщиков.
                         </p>
                     </div>
@@ -355,7 +355,7 @@
                             Время приготовления
                         </h5>
                         <p class="card-text">
-                            Большинство блюд готовится 15-25 минут. Сложные блюда могут потребовать 
+                            Большинство блюд готовится 15-25 минут. Сложные блюда могут потребовать
                             до 40 минут. Мы ценим ваше время и стараемся готовить максимально быстро.
                         </p>
                     </div>

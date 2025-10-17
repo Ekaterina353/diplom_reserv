@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("booking", "0006_booking_deposit_amount_booking_deposit_paid_and_more"),
     ]

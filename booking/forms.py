@@ -4,7 +4,6 @@ from decimal import Decimal
 
 from django import forms
 
-
 from .models import Booking, Table
 
 
@@ -263,10 +262,10 @@ class BookingForm(forms.ModelForm):
         has_items = False
         for field_name, value in self.cleaned_data.items():
             if (
-                field_name.startswith("item_")
-                and field_name.endswith("_quantity")
-                and value
-                and value > 0
+                    field_name.startswith("item_")
+                    and field_name.endswith("_quantity")
+                    and value
+                    and value > 0
             ):
                 has_items = True
                 break
@@ -331,10 +330,10 @@ class BookingForm(forms.ModelForm):
 
             for field_name, quantity in self.cleaned_data.items():
                 if (
-                    field_name.startswith("item_")
-                    and field_name.endswith("_quantity")
-                    and quantity
-                    and quantity > 0
+                        field_name.startswith("item_")
+                        and field_name.endswith("_quantity")
+                        and quantity
+                        and quantity > 0
                 ):
                     # Извлекаем ID блюда из имени поля
                     item_id = field_name.replace("item_", "").replace("_quantity", "")

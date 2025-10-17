@@ -4,384 +4,384 @@
 
 {% block extra_css %}
 <style>
-.hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                      url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(230, 179, 37, 0.1) 0%, rgba(46, 110, 79, 0.1) 100%);
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: white;
-    max-width: 800px;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(230, 179, 37, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1.5s ease-out;
-}
-
-.hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    line-height: 1.2;
-}
-
-.hero-subtitle {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
-    color: #FFB841;
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: shimmer 3s ease-in-out infinite;
-}
-
-.hero-description {
-    font-size: 1.3rem;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    font-weight: 300;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.hero-btn {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-btn-primary {
-    background: linear-gradient(45deg, #FFB841, #F4D03F);
-    color: #1A3D2E;
-    border: none;
-    box-shadow: 0 4px 15px rgba(230, 179, 37, 0.4);
-}
-
-.hero-btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(230, 179, 37, 0.6);
-    color: #1A3D2E;
-}
-
-.hero-btn-outline {
-    background: transparent;
-    color: white;
-    border: 2px solid #FFB841;
-    backdrop-filter: blur(10px);
-}
-
-.hero-btn-outline:hover {
-    background: #FFB841;
-    color: #1A3D2E;
-    transform: translateY(-2px);
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes shimmer {
-    0%, 100% { 
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(230, 179, 37, 0.3);
-    }
-    50% { 
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 179, 37, 0.6);
-    }
-}
-
-/* Декоративные элементы */
-.hero-content::before {
-    content: '❦';
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem;
-    color: #FFB841;
-    opacity: 0.7;
-}
-
-.hero-content::after {
-    content: '❦';
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem;
-    color: #FFB841;
-    opacity: 0.7;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 2rem;
-    }
-    
-    .hero-description {
-        font-size: 1.1rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
+    .hero-section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                          url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
         align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
     }
-    
-    .hero-btn {
-        width: 100%;
-        max-width: 300px;
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, rgba(230, 179, 37, 0.1) 0%, rgba(46, 110, 79, 0.1) 100%);
+        z-index: 1;
     }
-}
 
-/* Стили для секции "Связаться с нами" */
-.contact-section {
-    background: linear-gradient(135deg, #2E6E4F, #1A3D2E);
-    color: white;
-    padding: 80px 0;
-    position: relative;
-    overflow: hidden;
-}
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        max-width: 800px;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(230, 179, 37, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 1.5s ease-out;
+    }
 
-.contact-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="ornament" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(230,179,37,0.1)"/><circle cx="5" cy="5" r="0.5" fill="rgba(230,179,37,0.1)"/><circle cx="15" cy="15" r="0.5" fill="rgba(230,179,37,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23ornament)"/></svg>');
-    opacity: 0.3;
-}
+    .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1.2;
+    }
 
-.contact-container {
-    position: relative;
-    z-index: 2;
-}
-
-.contact-title {
-    font-family: 'Cinzel', serif;
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: #FFB841;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.contact-subtitle {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 4rem;
-    opacity: 0.9;
-    font-style: italic;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    margin-bottom: 4rem;
-}
-
-.contact-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 2.5rem;
-    text-align: center;
-    border: 1px solid rgba(230, 179, 37, 0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #FFB841, #F4D03F, #FFB841);
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
-}
-
-.contact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    border-color: #FFB841;
-}
-
-.contact-icon {
-    font-size: 3rem;
-    color: #FFB841;
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.contact-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #FFB841;
-}
-
-.contact-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.contact-link {
-    color: #FFB841;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.contact-link:hover {
-    color: #F4D03F;
-    text-decoration: underline;
-}
-
-.contact-form-section {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 3rem;
-    border: 1px solid rgba(230, 179, 37, 0.2);
-}
-
-.contact-form-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #FFB841;
-}
-
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-control {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(230, 179, 37, 0.3);
-    border-radius: 10px;
-    padding: 1rem;
-    color: white;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: #FFB841;
-    box-shadow: 0 0 0 0.2rem rgba(230, 179, 37, 0.25);
-    color: white;
-}
-
-.form-control::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.btn-contact {
-    background: linear-gradient(45deg, #FFB841, #F4D03F);
-    border: none;
-    color: #1A3D2E;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-contact:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(230, 179, 37, 0.4);
-    color: #1A3D2E;
-}
-
-.ornament-divider {
-    text-align: center;
-    margin: 3rem 0;
-    color: #FFB841;
-    font-size: 2rem;
-    opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-    .contact-title {
+    .hero-subtitle {
+        font-family: 'Great Vibes', cursive;
         font-size: 2.5rem;
+        color: #FFB841;
+        margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: shimmer 3s ease-in-out infinite;
     }
-    
+
+    .hero-description {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        font-weight: 300;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-btn-primary {
+        background: linear-gradient(45deg, #FFB841, #F4D03F);
+        color: #1A3D2E;
+        border: none;
+        box-shadow: 0 4px 15px rgba(230, 179, 37, 0.4);
+    }
+
+    .hero-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(230, 179, 37, 0.6);
+        color: #1A3D2E;
+    }
+
+    .hero-btn-outline {
+        background: transparent;
+        color: white;
+        border: 2px solid #FFB841;
+        backdrop-filter: blur(10px);
+    }
+
+    .hero-btn-outline:hover {
+        background: #FFB841;
+        color: #1A3D2E;
+        transform: translateY(-2px);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes shimmer {
+        0%, 100% {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(230, 179, 37, 0.3);
+        }
+        50% {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 179, 37, 0.6);
+        }
+    }
+
+    /* Декоративные элементы */
+    .hero-content::before {
+        content: '❦';
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        color: #FFB841;
+        opacity: 0.7;
+    }
+
+    .hero-content::after {
+        content: '❦';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        color: #FFB841;
+        opacity: 0.7;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-btn {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    /* Стили для секции "Связаться с нами" */
+    .contact-section {
+        background: linear-gradient(135deg, #2E6E4F, #1A3D2E);
+        color: white;
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="ornament" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(230,179,37,0.1)"/><circle cx="5" cy="5" r="0.5" fill="rgba(230,179,37,0.1)"/><circle cx="15" cy="15" r="0.5" fill="rgba(230,179,37,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23ornament)"/></svg>');
+        opacity: 0.3;
+    }
+
+    .contact-container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .contact-title {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: #FFB841;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 4rem;
+        opacity: 0.9;
+        font-style: italic;
+    }
+
     .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-bottom: 4rem;
     }
-    
+
     .contact-card {
-        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        border: 1px solid rgba(230, 179, 37, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
     }
-    
+
+    .contact-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #FFB841, #F4D03F, #FFB841);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        border-color: #FFB841;
+    }
+
+    .contact-icon {
+        font-size: 3rem;
+        color: #FFB841;
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+
+    .contact-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #FFB841;
+    }
+
+    .contact-card p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .contact-link {
+        color: #FFB841;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+        color: #F4D03F;
+        text-decoration: underline;
+    }
+
     .contact-form-section {
-        padding: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 3rem;
+        border: 1px solid rgba(230, 179, 37, 0.2);
     }
-}
+
+    .contact-form-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #FFB841;
+    }
+
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(230, 179, 37, 0.3);
+        border-radius: 10px;
+        padding: 1rem;
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: #FFB841;
+        box-shadow: 0 0 0 0.2rem rgba(230, 179, 37, 0.25);
+        color: white;
+    }
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-contact {
+        background: linear-gradient(45deg, #FFB841, #F4D03F);
+        border: none;
+        color: #1A3D2E;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+
+    .btn-contact:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(230, 179, 37, 0.4);
+        color: #1A3D2E;
+    }
+
+    .ornament-divider {
+        text-align: center;
+        margin: 3rem 0;
+        color: #FFB841;
+        font-size: 2rem;
+        opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+        .contact-title {
+            font-size: 2.5rem;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            padding: 2rem;
+        }
+
+        .contact-form-section {
+            padding: 2rem;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -392,7 +392,8 @@
         <h1 class="hero-title">Добро пожаловать в</h1>
         <div class="hero-subtitle">Žemaičiai</div>
         <p class="hero-description">
-            Ресторан литовской кухни в Краснодаре. Мы предлагаем аутентичные блюда региона Жемайтия и уютную атмосферу литовского гостеприимства.
+            Ресторан литовской кухни в Краснодаре. Мы предлагаем аутентичные блюда региона Жемайтия и уютную атмосферу
+            литовского гостеприимства.
         </p>
         <div class="hero-buttons">
             <a href="{% url 'booking:booking' %}" class="hero-btn hero-btn-primary">
@@ -410,7 +411,7 @@
     <div class="container contact-container">
         <h2 class="contact-title">Связаться с нами</h2>
         <p class="contact-subtitle">Мы всегда рады ответить на ваши вопросы и помочь с бронированием</p>
-        
+
         <div class="contact-grid">
             <!-- Контактная информация -->
             <div class="contact-card">
@@ -421,7 +422,7 @@
                     Открыть на карте
                 </a>
             </div>
-            
+
             <div class="contact-card">
                 <i class="bi bi-telephone contact-icon"></i>
                 <h3>Телефон</h3>
@@ -430,7 +431,7 @@
                     Позвонить сейчас
                 </a>
             </div>
-            
+
             <div class="contact-card">
                 <i class="bi bi-envelope contact-icon"></i>
                 <h3>Email</h3>
@@ -440,7 +441,7 @@
                 </a>
             </div>
         </div>
-        
+
         <!-- Часы работы по центру -->
         <div class="text-center" style="margin: 3rem 0;">
             <div class="contact-card" style="max-width: 400px; margin: 0 auto;">
@@ -452,9 +453,9 @@
                 </p>
             </div>
         </div>
-        
+
         <div class="ornament-divider">❦ ❦ ❦</div>
-        
+
         <!-- Форма обратной связи -->
         <div class="contact-form-section">
             <h3 class="contact-form-title">Отправить сообщение</h3>
@@ -476,7 +477,8 @@
                     <input type="text" class="form-control" name="subject" placeholder="Тема сообщения" required>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+                    <textarea class="form-control" name="message" rows="5" placeholder="Ваше сообщение"
+                              required></textarea>
                 </div>
                 <button type="submit" class="btn btn-contact">
                     <i class="bi bi-send me-2"></i>Отправить сообщение
