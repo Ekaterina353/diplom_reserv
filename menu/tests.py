@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 from django.test import TestCase
 from django.db import IntegrityError
 from menu.models import MenuCategory, MenuItem  # Замените 'menu' на фактическое имя вашего приложения
