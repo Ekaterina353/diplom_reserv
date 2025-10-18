@@ -90,13 +90,13 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: 🖥️ Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.1
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: test2
-          key: ${{ secrets.DEPLOY_KEY }}
-          port: ${{ secrets.SSH_PORT }}
+#      - name: 🖥️ Deploy via SSH
+#        uses: appleboy/ssh-action@v1.0.1
+#        with:
+#          host: ${{ secrets.DEPLOY_HOST }}
+#          username: test2
+#          key: ${{ secrets.DEPLOY_KEY }}
+#          port: ${{ secrets.SSH_PORT }}
           script: |
             # Проверка подключения
             echo "🔍 Проверяю подключение к серверу..."
