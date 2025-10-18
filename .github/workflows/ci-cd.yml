@@ -90,79 +90,79 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: 🖥️ Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.1
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: test2
-          key: ${{ secrets.DEPLOY_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            # Проверка подключения
-            echo "🔍 Проверяю подключение к серверу..."
-            whoami
-            pwd
-            ls -la
-
-            # Перейти в домашнюю папку пользователя
-            cd /home/test2 || exit
-            echo "📁 Перешел в папку: $(pwd)"
-
-            # Проверить наличие Docker
-            echo "🐳 Проверяю Docker..."
-            docker --version
-            docker-compose --version
-
-            # Создать папку resto-reserve и клонировать репозиторий, если нужно
-            if [ ! -d "resto-reserve" ]; then
-              echo "📁 Папка resto-reserve не найдена. Клонирую репозиторий..."
-              git clone https://github.com/Ekaterina353/diplom_reserv.git resto-reserve
-            fi
-
-            cd resto-reserve || exit
-            echo "📁 Перешел в папку проекта: $(pwd)"
-
-            # Переключиться на ветку и обновиться
-            echo "🌿 Переключаюсь на ветку: ${{ github.ref_name }}"
-            git fetch origin ${{ github.ref_name }}
-            git checkout ${{ github.ref_name }}
-            git pull origin ${{ github.ref_name }}
-
-            # Обновить .env из секретов
-            echo "⚙️ Создаю .env файл..."
-            cat > .env << EOF
-            DEBUG=${{ secrets.DEBUG }}
-            SECRET_KEY=${{ secrets.SECRET_KEY }}
-            ALLOWED_HOSTS=localhost,127.0.0.1,130.193.34.169
-            DB_NAME=resto_reserve
-            DB_USER=postgres
-            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
-            DB_HOST=db
-            DB_PORT=5432
-            TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
-            TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}
-            EOF
-
-            echo "📄 Содержимое .env файла:"
-            cat .env
-
-            # Проверить наличие docker-compose.yml
-            echo "📋 Проверяю наличие docker-compose.yml..."
-            ls -la docker-compose.yml
-
-            # Перезапустить сервисы
-            echo "🔄 Останавливаю контейнеры..."
-            docker-compose down
-
-            echo "🏗️ Пересобираю и запускаю контейнеры..."
-            docker-compose up -d --build
-
-            # Применить миграции
-            echo "🗄️ Применяю миграции..."
-            docker-compose run --rm web python manage.py migrate --noinput
-
-            # Собрать статику
-            echo "📦 Собираю статику..."
-            docker-compose run --rm web python manage.py collectstatic --noinput
+#      - name: 🖥️ Deploy via SSH
+#        uses: appleboy/ssh-action@v1.0.1
+#        with:
+#          host: ${{ secrets.DEPLOY_HOST }}
+#          username: test2
+#          key: ${{ secrets.DEPLOY_KEY }}
+#          port: ${{ secrets.SSH_PORT }}
+#          script: |
+#            # Проверка подключения
+#            echo "🔍 Проверяю подключение к серверу..."
+#            whoami
+#            pwd
+#            ls -la
+#
+#            # Перейти в домашнюю папку пользователя
+#            cd /home/test2 || exit
+#            echo "📁 Перешел в папку: $(pwd)"
+#
+#            # Проверить наличие Docker
+#            echo "🐳 Проверяю Docker..."
+#            docker --version
+#            docker-compose --version
+#
+#            # Создать папку resto-reserve и клонировать репозиторий, если нужно
+#            if [ ! -d "resto-reserve" ]; then
+#              echo "📁 Папка resto-reserve не найдена. Клонирую репозиторий..."
+#              git clone https://github.com/Ekaterina353/diplom_reserv.git resto-reserve
+#            fi
+#
+#            cd resto-reserve || exit
+#            echo "📁 Перешел в папку проекта: $(pwd)"
+#
+#            # Переключиться на ветку и обновиться
+#            echo "🌿 Переключаюсь на ветку: ${{ github.ref_name }}"
+#            git fetch origin ${{ github.ref_name }}
+#            git checkout ${{ github.ref_name }}
+#            git pull origin ${{ github.ref_name }}
+#
+#            # Обновить .env из секретов
+#            echo "⚙️ Создаю .env файл..."
+#            cat > .env << EOF
+#            DEBUG=${{ secrets.DEBUG }}
+#            SECRET_KEY=${{ secrets.SECRET_KEY }}
+#            ALLOWED_HOSTS=localhost,127.0.0.1,130.193.34.169
+#            DB_NAME=resto_reserve
+#            DB_USER=postgres
+#            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+#            DB_HOST=db
+#            DB_PORT=5432
+#            TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
+#            TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}
+#            EOF
+#
+#            echo "📄 Содержимое .env файла:"
+#            cat .env
+#
+#            # Проверить наличие docker-compose.yml
+#            echo "📋 Проверяю наличие docker-compose.yml..."
+#            ls -la docker-compose.yml
+#
+#            # Перезапустить сервисы
+#            echo "🔄 Останавливаю контейнеры..."
+#            docker-compose down
+#
+#            echo "🏗️ Пересобираю и запускаю контейнеры..."
+#            docker-compose up -d --build
+#
+#            # Применить миграции
+#            echo "🗄️ Применяю миграции..."
+#            docker-compose run --rm web python manage.py migrate --noinput
+#
+#            # Собрать статику
+#            echo "📦 Собираю статику..."
+#            docker-compose run --rm web python manage.py collectstatic --noinput
 
             echo "✅ Деплой завершён успешно!"
