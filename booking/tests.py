@@ -1,9 +1,9 @@
 import datetime
-
+import json
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-
+from django.utils import timezone
 
 from .models import Booking, SiteContent, Table, TeamMember
 
@@ -150,7 +150,7 @@ class TeamMemberModelTest(TestCase):
 
     def test_team_member_blank_photo(self):
         member = TeamMember.objects.create(name="Jane Smith", role="Waiter", bio="Friendly waiter")
-        self.assertEqual(member.photo, "")  # Проверяем, что blank=True работает
+        self.assertIsNone(member.photo.name)  # Проверяем, что blank=True работает. photo.name будет None, а не ""
 
 
 class SiteContentModelTest(TestCase):
@@ -179,7 +179,23 @@ class SiteContentModelTest(TestCase):
         with self.assertRaises(Exception):  # Catching any exception as constraint errors vary by DB
             SiteContent.objects.create(key="welcome_message", value="Duplicate key")
 
-    # Дополнительные тесты для edge cases и разных вариантов STATUS_CHOICES
+
+# Дополнительные тесты для edge cases и разных вариантов STATUS_CHOICES
+class BookingStatusTest(TestCase):  # Создаем новый класс для этих тестов, чтобы использовать setup
+    @classmethod
+    def setUpTestData(cls):
+        # Set up non-modified objects used by all test methods
+        cls.user = get_user_model().objects.create_user(username="testuser", password="testpassword")
+        cls.table = Table.objects.create(number=1, seats=4)
+        cls.booking = Booking.objects.create(
+            user=cls.user,
+            table=cls.table,
+            date=datetime.date(2025, 10, 20),
+            time=datetime.time(19, 00),
+            guests_count=2,
+            status="confirmed",
+        )
+
     def test_booking_status_choices(self):
         for choice in Booking.STATUS_CHOICES:
             Booking.objects.create(
