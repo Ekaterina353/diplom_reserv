@@ -165,7 +165,7 @@ dpkg-reconfigure -plow unattended-upgrades
 
 # Создание systemd сервиса для автозапуска
 log_info "Создание systemd сервиса..."
-cat > /etc/systemd/system/dzukija.service << 'EOF'
+cat > /etc/systemd/system/Žemaičiai.service << 'EOF'
 [Unit]
 Description=Žemaičiai Restaurant Booking System
 Requires=docker.service
@@ -185,7 +185,7 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-systemctl enable dzukija.service
+systemctl enable Žemaičiai.service
 
 # Настройка логирования
 log_info "Настройка логирования..."
@@ -237,16 +237,16 @@ cat > /home/deploy/README.md << 'EOF'
 ### Запуск/остановка приложения
 ```bash
 # Запуск
-sudo systemctl start dzukija
+sudo systemctl start Žemaičiai
 
 # Остановка
-sudo systemctl stop dzukija
+sudo systemctl stop Žemaičiai
 
 # Статус
-sudo systemctl status dzukija
+sudo systemctl status Žemaičiai
 
 # Перезапуск
-sudo systemctl restart dzukija
+sudo systemctl restart Žemaičiai
 ```
 
 ### Ручное управление Docker
@@ -286,13 +286,13 @@ sudo certbot --nginx -d your-domain.com
 ### Логи
 - Docker: `docker-compose logs`
 - Nginx: `/var/log/nginx/`
-- System: `journalctl -u dzukija`
+- System: `journalctl -u Žemaičiai`
 
 ### Статус сервисов
 ```bash
 sudo systemctl status nginx
 sudo systemctl status docker
-sudo systemctl status dzukija
+sudo systemctl status Žemaičiai
 ```
 EOF
 

@@ -219,94 +219,94 @@
                         <h1 class="register-title">Регистрация</h1>
                         <div class="register-subtitle">Žemaičiai</div>
                     </div>
-                    
+
                     <div class="register-body">
                         <form method="post" novalidate>
                             {% csrf_token %}
-                            
+
                             <div class="form-group">
                                 <label for="{{ form.username.id_for_label }}" class="form-label">
                                     <i class="bi bi-person me-2"></i>Имя пользователя
                                 </label>
                                 {{ form.username }}
                                 {% if form.username.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.username.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.username.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="{{ form.email.id_for_label }}" class="form-label">
                                     <i class="bi bi-envelope me-2"></i>Email
                                 </label>
                                 {{ form.email }}
                                 {% if form.email.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.email.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="{{ form.first_name.id_for_label }}" class="form-label">
                                     <i class="bi bi-person-badge me-2"></i>Имя
                                 </label>
                                 {{ form.first_name }}
                                 {% if form.first_name.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.first_name.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.first_name.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="{{ form.last_name.id_for_label }}" class="form-label">
                                     <i class="bi bi-person-badge me-2"></i>Фамилия
                                 </label>
                                 {{ form.last_name }}
                                 {% if form.last_name.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.last_name.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.last_name.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="{{ form.phone.id_for_label }}" class="form-label">
                                     <i class="bi bi-telephone me-2"></i>Телефон
                                 </label>
                                 {{ form.phone }}
                                 {% if form.phone.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.phone.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.phone.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="{{ form.password1.id_for_label }}" class="form-label">
                                     <i class="bi bi-lock me-2"></i>Пароль
                                 </label>
                                 {{ form.password1 }}
                                 {% if form.password1.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.password1.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.password1.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
-                                
+
                                 <div class="password-requirements">
                                     <h6>Требования к паролю:</h6>
                                     <ul>
@@ -317,30 +317,30 @@
                                     </ul>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="{{ form.password2.id_for_label }}" class="form-label">
                                     <i class="bi bi-lock-fill me-2"></i>Подтверждение пароля
                                 </label>
                                 {{ form.password2 }}
                                 {% if form.password2.errors %}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.password2.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {% for error in form.password2.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
                                 {% endif %}
                             </div>
-                            
+
                             <button type="submit" class="btn btn-register">
                                 <i class="bi bi-person-plus me-2"></i>Зарегистрироваться
                             </button>
                         </form>
-                        
+
                         <div class="ornament-divider">❦ ❦ ❦</div>
-                        
+
                         <div class="login-link">
-                            <p>Уже есть аккаунт? 
+                            <p>Уже есть аккаунт?
                                 <a href="{% url 'user:login' %}">
                                     <i class="bi bi-box-arrow-in-right me-1"></i>Войти
                                 </a>

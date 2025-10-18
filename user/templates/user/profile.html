@@ -316,7 +316,7 @@
                         <h1 class="profile-title">Личный кабинет</h1>
                         <div class="profile-subtitle">Žemaičiai</div>
                     </div>
-                    
+
                     <div class="profile-body">
                         <div class="profile-info">
                             <div class="info-card">
@@ -326,7 +326,7 @@
                                 </div>
                                 <p class="info-value">{{ user.username }}</p>
                             </div>
-                            
+
                             <div class="info-card">
                                 <div class="info-label">
                                     <i class="bi bi-envelope"></i>
@@ -334,7 +334,7 @@
                                 </div>
                                 <p class="info-value">{{ user.email }}</p>
                             </div>
-                            
+
                             <div class="info-card">
                                 <div class="info-label">
                                     <i class="bi bi-person-badge"></i>
@@ -342,13 +342,13 @@
                                 </div>
                                 <p class="info-value">
                                     {% if user.first_name and user.last_name %}
-                                        {{ user.first_name }} {{ user.last_name }}
+                                    {{ user.first_name }} {{ user.last_name }}
                                     {% else %}
-                                        Не указано
+                                    Не указано
                                     {% endif %}
                                 </p>
                             </div>
-                            
+
                             <div class="info-card">
                                 <div class="info-label">
                                     <i class="bi bi-telephone"></i>
@@ -356,13 +356,13 @@
                                 </div>
                                 <p class="info-value">
                                     {% if user.phone %}
-                                        {{ user.phone }}
+                                    {{ user.phone }}
                                     {% else %}
-                                        Не указан
+                                    Не указан
                                     {% endif %}
                                 </p>
                             </div>
-                            
+
                             <div class="info-card">
                                 <div class="info-label">
                                     <i class="bi bi-calendar-check"></i>
@@ -370,7 +370,7 @@
                                 </div>
                                 <p class="info-value">{{ user.date_joined|date:"d.m.Y" }}</p>
                             </div>
-                            
+
                             <div class="info-card">
                                 <div class="info-label">
                                     <i class="bi bi-clock"></i>
@@ -379,9 +379,9 @@
                                 <p class="info-value">{{ user.last_login|date:"d.m.Y H:i" }}</p>
                             </div>
                         </div>
-                        
+
                         <div class="ornament-divider">❦ ❦ ❦</div>
-                        
+
                         <div class="profile-actions">
                             <a href="{% url 'user:edit_profile' %}" class="btn btn-profile">
                                 <i class="bi bi-pencil"></i>
@@ -396,19 +396,19 @@
                                 Выйти
                             </a>
                         </div>
-                        
+
                         <div class="booking-history">
                             <h3>История бронирований</h3>
-                            
+
                             {% if bookings %}
-                                {% for booking in bookings %}
-                                    <div class="booking-card">
-                                        <div class="booking-header">
-                                            <div class="booking-date">
-                                                <i class="bi bi-calendar-event me-2"></i>
-                                                {{ booking.date|date:"d.m.Y" }} в {{ booking.time|time:"H:i" }}
-                                            </div>
-                                            <span class="booking-status status-{{ booking.status|lower }}">
+                            {% for booking in bookings %}
+                            <div class="booking-card">
+                                <div class="booking-header">
+                                    <div class="booking-date">
+                                        <i class="bi bi-calendar-event me-2"></i>
+                                        {{ booking.date|date:"d.m.Y" }} в {{ booking.time|time:"H:i" }}
+                                    </div>
+                                    <span class="booking-status status-{{ booking.status|lower }}">
                                                 {% if booking.status == 'pending' %}
                                                     Ожидает предоплаты
                                                 {% elif booking.status == 'paid' %}
@@ -419,37 +419,39 @@
                                                     Завершено
                                                 {% endif %}
                                             </span>
-                                        </div>
-                                        
-                                        <div class="booking-details">
-                                            <div class="booking-detail">
-                                                <span class="detail-label">Количество гостей</span>
-                                                <span class="detail-value">{{ booking.guests_count }} чел.</span>
-                                            </div>
-                                            <div class="booking-detail">
-                                                <span class="detail-label">Столик</span>
-                                                <span class="detail-value">{{ booking.table.name }}</span>
-                                            </div>
-                                            <div class="booking-detail">
-                                                <span class="detail-label">Комментарий</span>
-                                                <span class="detail-value">
+                                </div>
+
+                                <div class="booking-details">
+                                    <div class="booking-detail">
+                                        <span class="detail-label">Количество гостей</span>
+                                        <span class="detail-value">{{ booking.guests_count }} чел.</span>
+                                    </div>
+                                    <div class="booking-detail">
+                                        <span class="detail-label">Столик</span>
+                                        <span class="detail-value">{{ booking.table.name }}</span>
+                                    </div>
+                                    <div class="booking-detail">
+                                        <span class="detail-label">Комментарий</span>
+                                        <span class="detail-value">
                                                     {% if booking.comments %}
                                                         {{ booking.comments }}
                                                     {% else %}
                                                         Нет комментария
                                                     {% endif %}
                                                 </span>
-                                            </div>
-                                        </div>
                                     </div>
-                                {% endfor %}
-                            {% else %}
-                                <div class="no-bookings">
-                                    <i class="bi bi-calendar-x" style="font-size: 3rem; color: #E6B325; margin-bottom: 1rem;"></i>
-                                    <h4>История бронирований пуста</h4>
-                                    <p>У вас пока нет забронированных столиков. 
-                                       <a href="{% url 'booking:booking' %}" style="color: #E6B325;">Забронируйте столик</a> прямо сейчас!</p>
                                 </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="no-bookings">
+                                <i class="bi bi-calendar-x"
+                                   style="font-size: 3rem; color: #E6B325; margin-bottom: 1rem;"></i>
+                                <h4>История бронирований пуста</h4>
+                                <p>У вас пока нет забронированных столиков.
+                                    <a href="{% url 'booking:booking' %}" style="color: #E6B325;">Забронируйте
+                                        столик</a> прямо сейчас!</p>
+                            </div>
                             {% endif %}
                         </div>
                     </div>

@@ -295,17 +295,17 @@
                         <h1 class="bookings-title">Мои бронирования</h1>
                         <div class="bookings-subtitle">Žemaičiai</div>
                     </div>
-                    
+
                     <div class="bookings-body">
                         {% if bookings %}
-                            {% for booking in bookings %}
-                                <div class="booking-item">
-                                    <div class="booking-header">
-                                        <div class="booking-date">
-                                            <i class="bi bi-calendar-event"></i>
-                                            {{ booking.date|date:"d.m.Y" }} в {{ booking.time|time:"H:i" }}
-                                        </div>
-                                        <span class="booking-status status-{{ booking.status|lower }}">
+                        {% for booking in bookings %}
+                        <div class="booking-item">
+                            <div class="booking-header">
+                                <div class="booking-date">
+                                    <i class="bi bi-calendar-event"></i>
+                                    {{ booking.date|date:"d.m.Y" }} в {{ booking.time|time:"H:i" }}
+                                </div>
+                                <span class="booking-status status-{{ booking.status|lower }}">
                                             {% if booking.status == 'pending' %}
                                                 <i class="bi bi-clock me-1"></i>Ожидает предоплаты
                                             {% elif booking.status == 'paid' %}
@@ -318,136 +318,140 @@
                                                 <i class="bi bi-x-circle me-1"></i>Отменено
                                             {% endif %}
                                         </span>
-                                    </div>
-                                    
-                                    <div class="booking-details">
-                                        <div class="detail-item">
+                            </div>
+
+                            <div class="booking-details">
+                                <div class="detail-item">
                                             <span class="detail-label">
                                                 <i class="bi bi-person"></i>
                                                 Имя
                                             </span>
-                                            <span class="detail-value">{{ booking.name }}</span>
-                                        </div>
-                                        
-                                        <div class="detail-item">
+                                    <span class="detail-value">{{ booking.name }}</span>
+                                </div>
+
+                                <div class="detail-item">
                                             <span class="detail-label">
                                                 <i class="bi bi-telephone"></i>
                                                 Телефон
                                             </span>
-                                            <span class="detail-value">{{ booking.phone }}</span>
-                                        </div>
-                                        
-                                        <div class="detail-item">
+                                    <span class="detail-value">{{ booking.phone }}</span>
+                                </div>
+
+                                <div class="detail-item">
                                             <span class="detail-label">
                                                 <i class="bi bi-table"></i>
                                                 Столик
                                             </span>
-                                            <span class="detail-value">
+                                    <span class="detail-value">
                                                 №{{ booking.table.number }} ({{ booking.table.seats }} мест)
                                                 {% if booking.table.description %}
-                                                    <br><small class="text-muted">{{ booking.table.description }}</small>
+                                                    <br><small
+                                            class="text-muted">{{ booking.table.description }}</small>
                                                 {% endif %}
                                             </span>
-                                        </div>
-                                        
-                                        <div class="detail-item">
+                                </div>
+
+                                <div class="detail-item">
                                             <span class="detail-label">
                                                 <i class="bi bi-people"></i>
                                                 Количество гостей
                                             </span>
-                                            <span class="detail-value">{{ booking.guests_count }} чел.</span>
-                                        </div>
-                                        
-                                        <div class="detail-item">
+                                    <span class="detail-value">{{ booking.guests_count }} чел.</span>
+                                </div>
+
+                                <div class="detail-item">
                                             <span class="detail-label">
                                                 <i class="bi bi-calendar-check"></i>
                                                 Дата создания
                                             </span>
-                                            <span class="detail-value">{{ booking.created_at|date:"d.m.Y H:i" }}</span>
-                                        </div>
-                                        
-                                        {% if booking.has_preorder %}
-                                        <div class="detail-item">
+                                    <span class="detail-value">{{ booking.created_at|date:"d.m.Y H:i" }}</span>
+                                </div>
+
+                                {% if booking.has_preorder %}
+                                <div class="detail-item">
                                             <span class="detail-label">
                                                 <i class="bi bi-cart-check"></i>
                                                 Предзаказ
                                             </span>
-                                            <span class="detail-value">{{ booking.preorder_total }} ₽</span>
-                                        </div>
-                                        {% endif %}
-                                        
-                                        <div class="detail-item">
+                                    <span class="detail-value">{{ booking.preorder_total }} ₽</span>
+                                </div>
+                                {% endif %}
+
+                                <div class="detail-item">
                                             <span class="detail-label">
                                                 <i class="bi bi-credit-card"></i>
                                                 Предоплата
                                             </span>
-                                            <span class="detail-value">{{ booking.deposit_amount }} ₽</span>
-                                        </div>
-                                    </div>
-                                    
-                                    {% if booking.comments %}
-                                        <div class="detail-item" style="grid-column: 1 / -1; margin-bottom: 1rem;">
+                                    <span class="detail-value">{{ booking.deposit_amount }} ₽</span>
+                                </div>
+                            </div>
+
+                            {% if booking.comments %}
+                            <div class="detail-item" style="grid-column: 1 / -1; margin-bottom: 1rem;">
                                             <span class="detail-label">
                                                 <i class="bi bi-chat-text"></i>
                                                 Комментарий
                                             </span>
-                                            <span class="detail-value">{{ booking.comments }}</span>
-                                        </div>
-                                    {% endif %}
-                                    
-                                    <div class="booking-actions">
-                                        <a href="{% url 'booking:booking_detail' booking.id %}" class="btn btn-booking">
-                                            <i class="bi bi-eye"></i>
-                                            Подробнее
-                                        </a>
-                                        
-                                               {% if booking.status == 'pending' and booking.has_preorder %}
-           <div class="alert alert-info" style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #E6B325; color: #2E6E4F; margin-top: 1rem;">
-               <i class="bi bi-info-circle me-2"></i>
-               <strong>Ожидание подтверждения предоплаты</strong><br>
-               Ваша предоплата будет подтверждена администратором после поступления денежных средств.
-           </div>
-       {% endif %}
-                                        {% if booking.can_be_cancelled %}
-                                            <form method="post" action="{% url 'booking:cancel_booking' booking.id %}" style="display: inline;">
-                                                {% csrf_token %}
-                                                <button type="submit" class="btn btn-booking btn-danger">
-                                                    <i class="bi bi-x-circle"></i>
-                                                    Отменить
-                                                </button>
-                                            </form>
-                                        {% endif %}
-                                        
-                                        <a href="{% url 'booking:booking' %}" class="btn btn-booking btn-outline">
-                                            <i class="bi bi-calendar-plus"></i>
-                                            Забронировать еще
-                                        </a>
-                                        
-                                        <a href="{% url 'menu:menu_list' %}" class="btn btn-booking btn-outline">
-                                            <i class="bi bi-menu-button-wide"></i>
-                                            Посмотреть меню
-                                        </a>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="no-bookings">
-                                <div class="no-bookings-icon">
-                                    <i class="bi bi-calendar-x"></i>
-                                </div>
-                                <h3>У вас пока нет бронирований</h3>
-                                <p>Забронируйте столик в нашем ресторане и насладитесь аутентичной литовской кухней!</p>
-                                <div class="booking-actions" style="justify-content: center; margin-top: 2rem;">
-                                    <a href="{% url 'booking:booking' %}" class="btn btn-booking">
-                                        <i class="bi bi-calendar-plus"></i>
-                                        Забронировать столик
-                                    </a>
-                                </div>
+                                <span class="detail-value">{{ booking.comments }}</span>
                             </div>
+                            {% endif %}
+
+                            <div class="booking-actions">
+                                <a href="{% url 'booking:booking_detail' booking.id %}" class="btn btn-booking">
+                                    <i class="bi bi-eye"></i>
+                                    Подробнее
+                                </a>
+
+                                {% if booking.status == 'pending' and booking.has_preorder %}
+                                <div class="alert alert-info"
+                                     style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #E6B325; color: #2E6E4F; margin-top: 1rem;">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    <strong>Ожидание подтверждения предоплаты</strong><br>
+                                    Ваша предоплата будет подтверждена администратором после поступления денежных
+                                    средств.
+                                </div>
+                                {% endif %}
+                                {% if booking.can_be_cancelled %}
+                                <form method="post" action="{% url 'booking:cancel_booking' booking.id %}"
+                                      style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-booking btn-danger">
+                                        <i class="bi bi-x-circle"></i>
+                                        Отменить
+                                    </button>
+                                </form>
+                                {% endif %}
+
+                                <a href="{% url 'booking:booking' %}" class="btn btn-booking btn-outline">
+                                    <i class="bi bi-calendar-plus"></i>
+                                    Забронировать еще
+                                </a>
+
+                                <a href="{% url 'menu:menu_list' %}" class="btn btn-booking btn-outline">
+                                    <i class="bi bi-menu-button-wide"></i>
+                                    Посмотреть меню
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="no-bookings">
+                            <div class="no-bookings-icon">
+                                <i class="bi bi-calendar-x"></i>
+                            </div>
+                            <h3>У вас пока нет бронирований</h3>
+                            <p>Забронируйте столик в нашем ресторане и насладитесь аутентичной литовской кухней!</p>
+                            <div class="booking-actions" style="justify-content: center; margin-top: 2rem;">
+                                <a href="{% url 'booking:booking' %}" class="btn btn-booking">
+                                    <i class="bi bi-calendar-plus"></i>
+                                    Забронировать столик
+                                </a>
+                            </div>
+                        </div>
                         {% endif %}
-                        
+
                         <div class="ornament-divider">❦ ❦ ❦</div>
-                        
+
                         <div class="text-center">
                             <a href="{% url 'user:profile' %}" class="btn btn-booking btn-outline">
                                 <i class="bi bi-arrow-left"></i>

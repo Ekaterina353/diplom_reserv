@@ -113,6 +113,7 @@ sudo nano /etc/nginx/sites-available/dzukija
 ```
 
 Содержимое конфигурации Nginx:
+
 ```nginx
 server {
     listen 80;
