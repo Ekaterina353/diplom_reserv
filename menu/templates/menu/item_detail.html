@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ item.name }} - Žemaičiai{% endblock %}
+
+{% block extra_css %}
+<style>
+    .item-detail-hero {
+        background: linear-gradient(rgba(46, 110, 79, 0.8), rgba(46, 110, 79, 0.8)), 
+                    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=400&fit=crop') center/cover;
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+    }
+    
+    .item-detail-section {
+        padding: 80px 0;
+        background: #f8f9fa;
+    }
+    
+    .item-detail-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border: 2px solid #E6B325;
+        position: relative;
+    }
+    
+    .item-detail-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #E6B325, #F4D03F, #E6B325);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    .item-detail-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .item-detail-body {
+        padding: 3rem;
+    }
+    
+    .item-detail-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        color: #2E6E4F;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .item-detail-category {
+        display: inline-block;
+        background: rgba(46, 110, 79, 0.1);
+        color: #2E6E4F;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        border: 2px solid rgba(46, 110, 79, 0.2);
+        margin-bottom: 1.5rem;
+    }
+    
+    .item-detail-description {
+        color: #666;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        text-align: justify;
+    }
+    
+    .item-detail-price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #E6B325;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .item-detail-weight {
+        color: #888;
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .item-detail-badges {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .item-detail-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+    
+    .badge-vegetarian {
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+        border: 2px solid rgba(40, 167, 69, 0.3);
+    }
+    
+    .badge-spicy {
+        background: rgba(220, 53, 69, 0.1);
+        color: #dc3545;
+        border: 2px solid rgba(220, 53, 69, 0.3);
+    }
+    
+    .item-detail-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .btn-back {
+        background: transparent;
+        border: 2px solid #E6B325;
+        color: #E6B325;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .btn-back:hover {
+        background: #E6B325;
+        color: #1A3D2E;
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+    
+    .btn-order {
+        background: linear-gradient(45deg, #28a745, #20c997);
+        border: none;
+        color: white;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .btn-order:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        color: white;
+        text-decoration: none;
+    }
+    
+    .ornament-divider {
+        text-align: center;
+        margin: 2rem 0;
+        color: #E6B325;
+        font-size: 2rem;
+        opacity: 0.7;
+    }
+    
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    @media (max-width: 768px) {
+        .item-detail-body {
+            padding: 2rem;
+        }
+        
+        .item-detail-title {
+            font-size: 2rem;
+        }
+        
+        .item-detail-price {
+            font-size: 1.5rem;
+        }
+        
+        .item-detail-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="item-detail-hero">
+    <div class="container">
+        <h1 class="display-4" style="font-family: 'Cinzel', serif;">{{ item.name }}</h1>
+        <div class="decorative-title" style="font-size: 2rem;">Žemaičiai</div>
+        <div class="ornament-divider">❦ ❦ ❦</div>
+    </div>
+</section>
+
+<section class="item-detail-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="item-detail-card">
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="item-detail-image">
+                    {% else %}
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop"
+                         alt="{{ item.name }}"
+                         class="item-detail-image"
+                         onerror="this.src='https://via.placeholder.com/800x400/8B4513/FFFFFF?text={{ item.name|urlencode }}'">
+                    {% endif %}
+
+                    <div class="item-detail-body">
+                        <h1 class="item-detail-title">{{ item.name }}</h1>
+
+                        <div class="text-center">
+                            <span class="item-detail-category">
+                                <i class="bi bi-{{ item.category.icon|default:'grid' }} me-2"></i>
+                                {{ item.category.name }}
+                            </span>
+                        </div>
+
+                        <p class="item-detail-description">{{ item.description }}</p>
+
+                        <div class="item-detail-price">{{ item.price }} ₽</div>
+                        <div class="item-detail-weight">{{ item.weight }}</div>
+
+                        <div class="item-detail-badges">
+                            {% if item.is_vegetarian %}
+                            <span class="item-detail-badge badge-vegetarian">
+                                    <i class="bi bi-leaf me-1"></i>Вегетарианское
+                                </span>
+                            {% endif %}
+                            {% if item.is_spicy %}
+                            <span class="item-detail-badge badge-spicy">
+                                    <i class="bi bi-fire me-1"></i>Острое
+                                </span>
+                            {% endif %}
+                        </div>
+
+                        <div class="ornament-divider">❦ ❦ ❦</div>
+
+                        <div class="item-detail-actions">
+                            <a href="{% url 'menu:menu_list' %}" class="btn-back">
+                                <i class="bi bi-arrow-left me-2"></i>Вернуться к меню
+                            </a>
+                            <a href="{% url 'booking:booking' %}?item={{ item.id }}" class="btn-order">
+                                <i class="bi bi-cart-plus me-2"></i>Заказать блюдо
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

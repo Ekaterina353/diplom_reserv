@@ -1,0 +1,346 @@
+{% extends 'base.html' %}
+
+{% block title %}О ресторане - Žemaičiai{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-hero {
+        background: linear-gradient(rgba(46, 110, 79, 0.8), rgba(46, 110, 79, 0.8)), 
+                    url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=600&fit=crop') center/cover;
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+    }
+    
+    .mission-table {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+        margin: 2rem 0;
+        border: 2px solid #FFB841;
+    }
+    
+    .mission-table-header {
+        background: linear-gradient(135deg, #FFB841, #D4A017);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .mission-table-header h3 {
+        font-family: 'Cinzel', serif;
+        margin: 0;
+        font-size: 2rem;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .mission-table-body {
+        padding: 0;
+    }
+    
+    .mission-row {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .mission-row:last-child {
+        border-bottom: none;
+    }
+    
+    .mission-row:hover {
+        background: linear-gradient(90deg, rgba(230, 179, 37, 0.05), rgba(46, 110, 79, 0.05));
+        transform: translateX(5px);
+    }
+    
+    .mission-row::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #FFB841, #2E6E4F);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .mission-row:hover::before {
+        opacity: 1;
+    }
+    
+    .mission-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #FFB841, #F4D03F);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1.5rem;
+        font-size: 1.5rem;
+        color: white;
+        box-shadow: 0 4px 15px rgba(230, 179, 37, 0.3);
+        flex-shrink: 0;
+    }
+    
+    .mission-content {
+        flex: 1;
+    }
+    
+    .mission-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        color: #2E6E4F;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .mission-description {
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+    }
+    
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .value-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .value-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #FFB841, #2E6E4F, #FFB841);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(230, 179, 37, 0.2);
+        border-color: #FFB841;
+    }
+    
+    .value-icon {
+        font-size: 3rem;
+        color: #FFB841;
+        margin-bottom: 1rem;
+    }
+    
+    .value-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        color: #2E6E4F;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    
+    .value-description {
+        color: #666;
+        line-height: 1.6;
+    }
+    
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .ornament-divider {
+        text-align: center;
+        margin: 3rem 0;
+        color: #FFB841;
+        font-size: 2rem;
+        opacity: 0.7;
+    }
+    
+    @media (max-width: 768px) {
+        .mission-row {
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .mission-icon {
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .values-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="about-hero">
+    <div class="container">
+        <h1 class="display-4" style="font-family: 'Cinzel', serif;">О ресторане</h1>
+        <div class="decorative-title" style="font-size: 3rem;">Žemaičiai</div>
+        <p class="lead">Современная атмосфера с элементами литовских кулинарных традиций</p>
+        <div class="ornament-divider">❦ ❦ ❦</div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5">
+                <h3 class="elegant-title title-ornament mb-4">История ресторана</h3>
+                <p class="lead">{{ history }}</p>
+            </div>
+            <div class="col-lg-6 mb-5">
+                <h3 class="elegant-title title-ornament mb-4">Наша миссия</h3>
+                <p class="lead">{{ mission }}</p>
+            </div>
+        </div>
+
+        <!-- Красивая таблица миссии -->
+        <div class="mission-table">
+            <div class="mission-table-header">
+                <h3>Наши ценности и принципы</h3>
+            </div>
+            <div class="mission-table-body">
+                <div class="mission-row">
+                    <div class="mission-icon">
+                        <i class="bi bi-heart-fill"></i>
+                    </div>
+                    <div class="mission-content">
+                        <h4 class="mission-title">Традиции и качество</h4>
+                        <p class="mission-description">Мы сохраняем аутентичные рецепты литовской кухни, передавая из
+                            поколения в поколение традиции приготовления блюд с использованием только свежих и
+                            качественных ингредиентов.</p>
+                    </div>
+                </div>
+
+                <div class="mission-row">
+                    <div class="mission-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div class="mission-content">
+                        <h4 class="mission-title">Гостеприимство</h4>
+                        <p class="mission-description">Каждый гость для нас - особенный. Мы создаем уютную атмосферу
+                            литовского гостеприимства, где каждый чувствует себя как дома.</p>
+                    </div>
+                </div>
+
+                <div class="mission-row">
+                    <div class="mission-icon">
+                        <i class="bi bi-award-fill"></i>
+                    </div>
+                    <div class="mission-content">
+                        <h4 class="mission-title">Инновации в традициях</h4>
+                        <p class="mission-description">Мы бережно сохраняем классические рецепты, но не боимся
+                            экспериментировать, создавая новые интерпретации традиционных блюд.</p>
+                    </div>
+                </div>
+
+                <div class="mission-row">
+                    <div class="mission-icon">
+                        <i class="bi bi-leaf-fill"></i>
+                    </div>
+                    <div class="mission-content">
+                        <h4 class="mission-title">Экологичность</h4>
+                        <p class="mission-description">Мы заботимся об окружающей среде, используя экологически чистые
+                            продукты и минимизируя отходы в процессе приготовления.</p>
+                    </div>
+                </div>
+
+                <div class="mission-row">
+                    <div class="mission-icon">
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="mission-content">
+                        <h4 class="mission-title">Совершенство в деталях</h4>
+                        <p class="mission-description">Каждое блюдо - это произведение искусства. Мы уделяем внимание
+                            каждой детали, от выбора ингредиентов до подачи на стол.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Дополнительные ценности в карточках -->
+        <div class="ornament-divider">❦ ❦ ❦</div>
+
+        <h3 class="text-center elegant-title title-ornament mb-5">Что делает нас особенными</h3>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <i class="bi bi-geo-alt value-icon"></i>
+                <h4 class="value-title">Аутентичность</h4>
+                <p class="value-description">Настоящие литовские рецепты, привезенные прямо из региона Жемайтия</p>
+            </div>
+
+            <div class="value-card">
+                <i class="bi bi-clock-history value-icon"></i>
+                <h4 class="value-title">Традиции</h4>
+                <p class="value-description">Столетние традиции приготовления, передающиеся из поколения в поколение</p>
+            </div>
+
+            <div class="value-card">
+                <i class="bi bi-shield-check value-icon"></i>
+                <h4 class="value-title">Качество</h4>
+                <p class="value-description">Только свежие, отборные ингредиенты от проверенных поставщиков</p>
+            </div>
+
+            <div class="value-card">
+                <i class="bi bi-emoji-heart-eyes value-icon"></i>
+                <h4 class="value-title">Атмосфера</h4>
+                <p class="value-description">Уютная обстановка, напоминающая традиционные литовские усадьбы</p>
+            </div>
+        </div>
+
+        <div class="ornament-divider">❦ ❦ ❦</div>
+
+        <h3 class="text-center elegant-title title-ornament mb-5">Наша команда</h3>
+        <div class="row g-4">
+            {% for member in team_members %}
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm" style="border: 2px solid #FFB841;">
+                    {% if member.photo %}
+                    <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="card-img-top">
+                    {% else %}
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+                         alt="{{ member.name }}"
+                         class="card-img-top"
+                         onerror="this.src='https://via.placeholder.com/400x300/8B4513/FFFFFF?text={{ member.name|urlencode }}'">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ member.name }}</h5>
+                        <h6 class="card-subtitle text-muted mb-2">{{ member.role }}</h6>
+                        <p class="card-text">{{ member.bio }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p class="text-center text-muted">Информация о команде будет добавлена позже.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %} 

@@ -1,0 +1,463 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль - Žemaičiai{% endblock %}
+
+{% block extra_css %}
+<style>
+    .profile-section {
+        background: linear-gradient(135deg, #2E6E4F, #1A3D2E);
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
+    
+    .profile-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border: 2px solid #E6B325;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .profile-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #E6B325, #F4D03F, #E6B325);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    .profile-header {
+        background: linear-gradient(135deg, #E6B325, #D4A017);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+    }
+    
+    .profile-header::before {
+        content: '❦';
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    .profile-header::after {
+        content: '❦';
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    .profile-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .profile-subtitle {
+        font-family: 'Great Vibes', cursive;
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        opacity: 0.9;
+    }
+    
+    .profile-body {
+        padding: 3rem;
+    }
+    
+    .profile-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .info-card {
+        background: rgba(230, 179, 37, 0.05);
+        border: 1px solid rgba(230, 179, 37, 0.2);
+        border-radius: 15px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .info-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(230, 179, 37, 0.15);
+        border-color: #E6B325;
+    }
+    
+    .info-label {
+        font-weight: 600;
+        color: #2E6E4F;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .info-value {
+        color: #333;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+    
+    .profile-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .btn-profile {
+        background: linear-gradient(45deg, #E6B325, #F4D03F);
+        border: none;
+        color: #1A3D2E;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .btn-profile:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(230, 179, 37, 0.4);
+        color: #1A3D2E;
+    }
+    
+    .btn-outline {
+        background: transparent;
+        color: #E6B325;
+        border: 2px solid #E6B325;
+    }
+    
+    .btn-outline:hover {
+        background: #E6B325;
+        color: #1A3D2E;
+    }
+    
+    .booking-history {
+        margin-top: 3rem;
+        padding-top: 3rem;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .booking-history h3 {
+        font-family: 'Playfair Display', serif;
+        color: #2E6E4F;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .booking-card {
+        background: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #E6B325;
+        transition: all 0.3s ease;
+    }
+    
+    .booking-card:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 25px rgba(230, 179, 37, 0.2);
+    }
+    
+    .booking-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .booking-date {
+        font-weight: 600;
+        color: #2E6E4F;
+        font-size: 1.1rem;
+    }
+    
+    .booking-status {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .status-pending {
+        background: rgba(255, 193, 7, 0.1);
+        color: #ffc107;
+        border: 1px solid rgba(255, 193, 7, 0.3);
+    }
+    
+    .status-paid {
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+        border: 1px solid rgba(40, 167, 69, 0.3);
+    }
+    
+    .status-confirmed {
+        background: rgba(23, 162, 184, 0.1);
+        color: #17a2b8;
+        border: 1px solid rgba(23, 162, 184, 0.3);
+    }
+    
+    .status-completed {
+        background: rgba(108, 117, 125, 0.1);
+        color: #6c757d;
+        border: 1px solid rgba(108, 117, 125, 0.3);
+    }
+    
+    .booking-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .booking-detail {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .detail-label {
+        font-size: 0.8rem;
+        color: #666;
+        margin-bottom: 0.25rem;
+    }
+    
+    .detail-value {
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .no-bookings {
+        text-align: center;
+        padding: 3rem;
+        color: #666;
+        font-style: italic;
+    }
+    
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .ornament-divider {
+        text-align: center;
+        margin: 2rem 0;
+        color: #E6B325;
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    @media (max-width: 768px) {
+        .profile-body {
+            padding: 2rem;
+        }
+        
+        .profile-title {
+            font-size: 2rem;
+        }
+        
+        .profile-subtitle {
+            font-size: 1.2rem;
+        }
+        
+        .profile-info {
+            grid-template-columns: 1fr;
+        }
+        
+        .profile-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .btn-profile {
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+        }
+        
+        .booking-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="profile-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <h1 class="profile-title">Личный кабинет</h1>
+                        <div class="profile-subtitle">Žemaičiai</div>
+                    </div>
+
+                    <div class="profile-body">
+                        <div class="profile-info">
+                            <div class="info-card">
+                                <div class="info-label">
+                                    <i class="bi bi-person"></i>
+                                    Имя пользователя
+                                </div>
+                                <p class="info-value">{{ user.username }}</p>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-label">
+                                    <i class="bi bi-envelope"></i>
+                                    Email
+                                </div>
+                                <p class="info-value">{{ user.email }}</p>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-label">
+                                    <i class="bi bi-person-badge"></i>
+                                    Полное имя
+                                </div>
+                                <p class="info-value">
+                                    {% if user.first_name and user.last_name %}
+                                    {{ user.first_name }} {{ user.last_name }}
+                                    {% else %}
+                                    Не указано
+                                    {% endif %}
+                                </p>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-label">
+                                    <i class="bi bi-telephone"></i>
+                                    Телефон
+                                </div>
+                                <p class="info-value">
+                                    {% if user.phone %}
+                                    {{ user.phone }}
+                                    {% else %}
+                                    Не указан
+                                    {% endif %}
+                                </p>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-label">
+                                    <i class="bi bi-calendar-check"></i>
+                                    Дата регистрации
+                                </div>
+                                <p class="info-value">{{ user.date_joined|date:"d.m.Y" }}</p>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-label">
+                                    <i class="bi bi-clock"></i>
+                                    Последний вход
+                                </div>
+                                <p class="info-value">{{ user.last_login|date:"d.m.Y H:i" }}</p>
+                            </div>
+                        </div>
+
+                        <div class="ornament-divider">❦ ❦ ❦</div>
+
+                        <div class="profile-actions">
+                            <a href="{% url 'user:edit_profile' %}" class="btn btn-profile">
+                                <i class="bi bi-pencil"></i>
+                                Редактировать профиль
+                            </a>
+                            <a href="{% url 'booking:booking' %}" class="btn btn-profile btn-outline">
+                                <i class="bi bi-calendar-plus"></i>
+                                Забронировать столик
+                            </a>
+                            <a href="{% url 'user:logout' %}" class="btn btn-profile btn-outline">
+                                <i class="bi bi-box-arrow-right"></i>
+                                Выйти
+                            </a>
+                        </div>
+
+                        <div class="booking-history">
+                            <h3>История бронирований</h3>
+
+                            {% if bookings %}
+                            {% for booking in bookings %}
+                            <div class="booking-card">
+                                <div class="booking-header">
+                                    <div class="booking-date">
+                                        <i class="bi bi-calendar-event me-2"></i>
+                                        {{ booking.date|date:"d.m.Y" }} в {{ booking.time|time:"H:i" }}
+                                    </div>
+                                    <span class="booking-status status-{{ booking.status|lower }}">
+                                                {% if booking.status == 'pending' %}
+                                                    Ожидает предоплаты
+                                                {% elif booking.status == 'paid' %}
+                                                    Предоплата внесена
+                                                {% elif booking.status == 'confirmed' %}
+                                                    Подтверждено
+                                                {% elif booking.status == 'completed' %}
+                                                    Завершено
+                                                {% endif %}
+                                            </span>
+                                </div>
+
+                                <div class="booking-details">
+                                    <div class="booking-detail">
+                                        <span class="detail-label">Количество гостей</span>
+                                        <span class="detail-value">{{ booking.guests_count }} чел.</span>
+                                    </div>
+                                    <div class="booking-detail">
+                                        <span class="detail-label">Столик</span>
+                                        <span class="detail-value">{{ booking.table.name }}</span>
+                                    </div>
+                                    <div class="booking-detail">
+                                        <span class="detail-label">Комментарий</span>
+                                        <span class="detail-value">
+                                                    {% if booking.comments %}
+                                                        {{ booking.comments }}
+                                                    {% else %}
+                                                        Нет комментария
+                                                    {% endif %}
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="no-bookings">
+                                <i class="bi bi-calendar-x"
+                                   style="font-size: 3rem; color: #E6B325; margin-bottom: 1rem;"></i>
+                                <h4>История бронирований пуста</h4>
+                                <p>У вас пока нет забронированных столиков.
+                                    <a href="{% url 'booking:booking' %}" style="color: #E6B325;">Забронируйте
+                                        столик</a> прямо сейчас!</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

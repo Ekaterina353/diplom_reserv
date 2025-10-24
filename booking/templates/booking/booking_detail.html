@@ -1,0 +1,460 @@
+{% extends 'base.html' %}
+
+{% block title %}Детали бронирования - Žemaičiai{% endblock %}
+
+{% block extra_css %}
+<style>
+    .booking-detail-section {
+        background: linear-gradient(135deg, #2E6E4F, #1A3D2E);
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
+    
+    .booking-detail-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border: 2px solid #FFB841;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .booking-detail-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #FFB841, #F4D03F, #FFB841);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    .booking-detail-header {
+        background: linear-gradient(135deg, #FFB841, #D4A017);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+    }
+    
+    .booking-detail-header::before {
+        content: '❦';
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    .booking-detail-header::after {
+        content: '❦';
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    .booking-detail-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .booking-detail-subtitle {
+        font-family: 'Great Vibes', cursive;
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        opacity: 0.9;
+    }
+    
+    .booking-detail-body {
+        padding: 3rem;
+    }
+    
+    .booking-info {
+        background: rgba(230, 179, 37, 0.05);
+        border: 1px solid rgba(230, 179, 37, 0.2);
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .booking-info h3 {
+        color: #2E6E4F;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(230, 179, 37, 0.1);
+    }
+    
+    .info-row:last-child {
+        border-bottom: none;
+    }
+    
+    .info-label {
+        font-weight: 600;
+        color: #2E6E4F;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .info-value {
+        color: #666;
+        font-weight: 500;
+    }
+    
+    .comments-section {
+        background: rgba(46, 110, 79, 0.05);
+        border: 1px solid rgba(46, 110, 79, 0.2);
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .comments-section h3 {
+        color: #2E6E4F;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .comments-content {
+        color: #666;
+        line-height: 1.6;
+        white-space: pre-line;
+    }
+    
+    .status-badge {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+    
+    .status-pending {
+        background: rgba(255, 193, 7, 0.1);
+        color: #ffc107;
+        border: 2px solid rgba(255, 193, 7, 0.3);
+    }
+    
+    .status-paid {
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+        border: 2px solid rgba(40, 167, 69, 0.3);
+    }
+    
+    .status-confirmed {
+        background: rgba(23, 162, 184, 0.1);
+        color: #17a2b8;
+        border: 2px solid rgba(23, 162, 184, 0.3);
+    }
+    
+    .status-completed {
+        background: rgba(108, 117, 125, 0.1);
+        color: #6c757d;
+        border: 2px solid rgba(108, 117, 125, 0.3);
+    }
+    
+    .status-cancelled {
+        background: rgba(220, 53, 69, 0.1);
+        color: #dc3545;
+        border: 2px solid rgba(220, 53, 69, 0.3);
+    }
+    
+    .btn-back {
+        background: transparent;
+        border: 2px solid #FFB841;
+        color: #FFB841;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .btn-back:hover {
+        background: #FFB841;
+        color: #1A3D2E;
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+    
+    .btn-confirm-payment {
+        background: linear-gradient(45deg, #28a745, #20c997);
+        border: none;
+        color: white;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-left: 1rem;
+    }
+    
+    .btn-confirm-payment:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        color: white;
+        text-decoration: none;
+    }
+    
+    .btn-cancel {
+        background: linear-gradient(45deg, #dc3545, #e74c3c);
+        border: none;
+        color: white;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-left: 1rem;
+    }
+    
+    .btn-cancel:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+        color: white;
+        text-decoration: none;
+    }
+    
+    .payment-alert {
+        background: rgba(255, 193, 7, 0.1);
+        border: 1px solid rgba(255, 193, 7, 0.3);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        color: #856404;
+    }
+    
+    .ornament-divider {
+        text-align: center;
+        margin: 2rem 0;
+        color: #FFB841;
+        font-size: 2rem;
+        opacity: 0.7;
+    }
+    
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    @media (max-width: 768px) {
+        .booking-detail-body {
+            padding: 2rem;
+        }
+        
+        .booking-detail-title {
+            font-size: 2rem;
+        }
+        
+        .booking-detail-subtitle {
+            font-size: 1.2rem;
+        }
+        
+        .info-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="booking-detail-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="booking-detail-card">
+                    <div class="booking-detail-header">
+                        <h1 class="booking-detail-title">Детали бронирования</h1>
+                        <div class="booking-detail-subtitle">Žemaičiai</div>
+                    </div>
+
+                    <div class="booking-detail-body">
+                        {% if booking.status == 'pending' and booking.has_preorder %}
+                        <div class="payment-alert">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-exclamation-triangle me-3"
+                                   style="font-size: 1.5rem; color: #ffc107;"></i>
+                                <div>
+                                    <h5 class="mb-1">Требуется предоплата</h5>
+                                    <p class="mb-0">
+                                        Для подтверждения предзаказа необходимо внести предоплату в размере <strong>{{
+                                        booking.deposit_amount }} ₽</strong>.
+                                        <br>
+                                        <small>Свяжитесь с нами по телефону для внесения предоплаты.</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="booking-info">
+                            <h3>
+                                <i class="bi bi-calendar-check"></i>
+                                Информация о бронировании
+                            </h3>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-person"></i>
+                                    Имя
+                                </div>
+                                <div class="info-value">{{ booking.name }}</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-telephone"></i>
+                                    Телефон
+                                </div>
+                                <div class="info-value">{{ booking.phone }}</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-table"></i>
+                                    Столик
+                                </div>
+                                <div class="info-value">
+                                    №{{ booking.table.number }} ({{ booking.table.seats }} мест)
+                                    {% if booking.table.description %}
+                                    <br><small class="text-muted">{{ booking.table.description }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-calendar"></i>
+                                    Дата
+                                </div>
+                                <div class="info-value">{{ booking.date|date:"d.m.Y" }}</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-clock"></i>
+                                    Время
+                                </div>
+                                <div class="info-value">{{ booking.time }}</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-people"></i>
+                                    Количество гостей
+                                </div>
+                                <div class="info-value">{{ booking.guests_count }} человек</div>
+                            </div>
+
+                            {% if booking.has_preorder %}
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-cart-check"></i>
+                                    Сумма предзаказа
+                                </div>
+                                <div class="info-value">{{ booking.preorder_total }} ₽</div>
+                            </div>
+                            {% endif %}
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-credit-card"></i>
+                                    Сумма предоплаты
+                                </div>
+                                <div class="info-value">{{ booking.deposit_amount }} ₽</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="bi bi-check-circle"></i>
+                                    Статус
+                                </div>
+                                <div class="info-value">
+                                    <span class="status-badge status-{{ booking.status }}">
+                                        {% if booking.status == 'pending' %}
+                                            <i class="bi bi-clock me-1"></i>Ожидает предоплаты
+                                        {% elif booking.status == 'paid' %}
+                                            <i class="bi bi-check-circle me-1"></i>Предоплата внесена
+                                        {% elif booking.status == 'confirmed' %}
+                                            <i class="bi bi-check-circle me-1"></i>Подтверждено
+                                        {% elif booking.status == 'completed' %}
+                                            <i class="bi bi-check-circle me-1"></i>Завершено
+                                        {% elif booking.status == 'cancelled' %}
+                                            <i class="bi bi-x-circle me-1"></i>Отменено
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if booking.comments %}
+                        <div class="comments-section">
+                            <h3>
+                                <i class="bi bi-chat-text"></i>
+                                Дополнительная информация
+                            </h3>
+                            <div class="comments-content">{{ booking.comments }}</div>
+                        </div>
+                        {% endif %}
+
+                        <div class="ornament-divider">❦ ❦ ❦</div>
+
+                        <div class="text-center">
+                            <a href="{% url 'user:my_bookings' %}" class="btn-back">
+                                <i class="bi bi-arrow-left me-2"></i>Вернуться к моим бронированиям
+                            </a>
+                            {% if booking.status == 'pending' and booking.has_preorder %}
+                            <div class="alert alert-info"
+                                 style="background: rgba(230, 179, 37, 0.1); border-left: 4px solid #FFB841; color: #2E6E4F;">
+                                <i class="bi bi-info-circle me-2"></i>
+                                <strong>Ожидание подтверждения предоплаты</strong><br>
+                                Ваша предоплата будет подтверждена администратором после поступления денежных средств.
+                            </div>
+                            {% endif %}
+                            {% if booking.can_be_cancelled %}
+                            <form method="post" action="{% url 'booking:cancel_booking' booking.id %}"
+                                  style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-cancel">
+                                    <i class="bi bi-x-circle me-2"></i>Отменить бронирование
+                                </button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

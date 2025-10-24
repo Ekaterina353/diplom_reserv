@@ -1,0 +1,365 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование профиля - Žemaičiai{% endblock %}
+
+{% block extra_css %}
+<style>
+    .profile-edit-section {
+        background: linear-gradient(135deg, #2E6E4F, #1A3D2E);
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
+    
+    .profile-edit-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border: 2px solid #E6B325;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .profile-edit-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #E6B325, #F4D03F, #E6B325);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    .profile-edit-header {
+        background: linear-gradient(135deg, #E6B325, #D4A017);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+    }
+    
+    .profile-edit-header::before {
+        content: '❦';
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    .profile-edit-header::after {
+        content: '❦';
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    .profile-edit-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .profile-edit-subtitle {
+        font-family: 'Great Vibes', cursive;
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        opacity: 0.9;
+    }
+    
+    .profile-edit-body {
+        padding: 3rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+    
+    .form-label {
+        font-weight: 600;
+        color: #2E6E4F;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+    
+    .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 1rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: white;
+    }
+    
+    .form-control:focus {
+        border-color: #E6B325;
+        box-shadow: 0 0 0 0.2rem rgba(230, 179, 37, 0.25);
+        outline: none;
+    }
+    
+    .form-control.is-invalid {
+        border-color: #dc3545;
+    }
+    
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+    
+    .btn-save {
+        background: linear-gradient(45deg, #E6B325, #F4D03F);
+        border: none;
+        color: #1A3D2E;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    
+    .btn-save:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(230, 179, 37, 0.4);
+        color: #1A3D2E;
+    }
+    
+    .btn-cancel {
+        background: transparent;
+        border: 2px solid #E6B325;
+        color: #E6B325;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 1rem;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .btn-cancel:hover {
+        background: #E6B325;
+        color: #1A3D2E;
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+    
+    .alert {
+        border-radius: 10px;
+        border: none;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .alert-success {
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+        border-left: 4px solid #28a745;
+    }
+    
+    .alert-danger {
+        background: rgba(220, 53, 69, 0.1);
+        color: #dc3545;
+        border-left: 4px solid #dc3545;
+    }
+    
+    .password-change-section {
+        background: rgba(230, 179, 37, 0.05);
+        border: 1px solid rgba(230, 179, 37, 0.2);
+        border-radius: 15px;
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .password-change-title {
+        font-family: 'Playfair Display', serif;
+        color: #2E6E4F;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .password-requirements {
+        background: rgba(230, 179, 37, 0.1);
+        border: 1px solid rgba(230, 179, 37, 0.3);
+        border-radius: 10px;
+        padding: 1rem;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #666;
+    }
+    
+    .password-requirements h6 {
+        color: #2E6E4F;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .password-requirements ul {
+        margin: 0;
+        padding-left: 1.5rem;
+    }
+    
+    .password-requirements li {
+        margin-bottom: 0.25rem;
+    }
+    
+    @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .ornament-divider {
+        text-align: center;
+        margin: 2rem 0;
+        color: #E6B325;
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    @media (max-width: 768px) {
+        .profile-edit-body {
+            padding: 2rem;
+        }
+        
+        .profile-edit-title {
+            font-size: 2rem;
+        }
+        
+        .profile-edit-subtitle {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="profile-edit-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="profile-edit-card">
+                    <div class="profile-edit-header">
+                        <h1 class="profile-edit-title">Редактирование профиля</h1>
+                        <div class="profile-edit-subtitle">Žemaičiai</div>
+                    </div>
+
+                    <div class="profile-edit-body">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            <i class="bi bi-{% if message.tags == 'success' %}check-circle{% else %}exclamation-triangle{% endif %} me-2"></i>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label for="{{ form.first_name.id_for_label }}" class="form-label">
+                                    <i class="bi bi-person-badge me-2"></i>Имя
+                                </label>
+                                {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.first_name.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.last_name.id_for_label }}" class="form-label">
+                                    <i class="bi bi-person-badge me-2"></i>Фамилия
+                                </label>
+                                {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.last_name.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">
+                                    <i class="bi bi-envelope me-2"></i>Email
+                                </label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.phone.id_for_label }}" class="form-label">
+                                    <i class="bi bi-telephone me-2"></i>Телефон
+                                </label>
+                                {{ form.phone }}
+                                {% if form.phone.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.phone.errors %}
+                                    {{ error }}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <button type="submit" class="btn btn-save">
+                                <i class="bi bi-check-circle me-2"></i>Сохранить изменения
+                            </button>
+                        </form>
+
+                        <div class="ornament-divider">❦ ❦ ❦</div>
+
+                        <div class="password-change-section">
+                            <h3 class="password-change-title">
+                                <i class="bi bi-lock"></i>
+                                Изменение пароля
+                            </h3>
+                            <p class="text-muted mb-3">
+                                Для изменения пароля перейдите в раздел безопасности или обратитесь к администратору.
+                            </p>
+                            <div class="password-requirements">
+                                <h6>Требования к паролю:</h6>
+                                <ul>
+                                    <li>Минимум 8 символов</li>
+                                    <li>Не должен быть слишком простым</li>
+                                    <li>Не должен состоять только из цифр</li>
+                                    <li>Не должен совпадать с именем пользователя</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <a href="{% url 'user:profile' %}" class="btn btn-cancel">
+                            <i class="bi bi-arrow-left me-2"></i>Вернуться к профилю
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
